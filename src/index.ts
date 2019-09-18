@@ -11,7 +11,7 @@ import * as Mongoose from "mongoose";
 import { LibraryRoutes } from './routes/import';
 import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
 
-const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus-Mint', '1');
+const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus-Library', '1');
 
 if (isDevelopment()) {
     setting.allowCrossOrigin();
@@ -31,7 +31,6 @@ db.on('error', console.log.bind(console, 'connection error:'));
 // Health
 app.health('/health');
 
-// Mint
 app.routeList(LibraryRoutes);
 
 app.host(9000);
