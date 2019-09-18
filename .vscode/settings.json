@@ -1,0 +1,21 @@
+{
+    "cSpell.words": [
+        "Loggable",
+        "WMXPY",
+        "bwnl",
+        "chaetodon",
+        "codecov",
+        "connor",
+        "repo",
+        "sparidae",
+        "splited",
+        "sudoo",
+        "triforce",
+        "tshook",
+        "xlink",
+        "xmlns"
+    ],
+    "tslint.configFile": "typescript/tslint.json",
+    "javascript.preferences.importModuleSpecifier": "auto",
+    "typescript.preferences.importModuleSpecifier": "auto",
+}
