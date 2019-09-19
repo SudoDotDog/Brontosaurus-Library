@@ -36,7 +36,7 @@ export class ArticleRoute extends BrontosaurusRoute {
                 throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, name);
             }
 
-            res.agent.raw(article);
+            res.agent.raw(this._config.joinPath(article.path));
         } catch (error) {
 
             this._log.error(`${req.path} - ${error.message} (${error.code})`);

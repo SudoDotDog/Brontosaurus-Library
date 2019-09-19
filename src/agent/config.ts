@@ -34,12 +34,17 @@ export class ConfigAgent {
             return this._config.basePath;
         }
 
-        return Path.join(this._configPath, this._config.basePath);
+        return Path.join(this._configPath, '..', this._config.basePath);
     }
 
     public get articles(): Article[] {
 
         return this._config.articles;
+    }
+
+    public joinPath(url: string): string {
+
+        return Path.join(this.basePath, url);
     }
 
     private _getConfig(path: string): LibraryConfig {

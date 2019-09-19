@@ -17,6 +17,7 @@ lib-cov
 # App
 app
 dist
+temp.txt
 
 # Coverage directory used by tools like istanbul
 coverage
