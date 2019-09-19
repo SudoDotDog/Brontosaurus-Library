@@ -6,13 +6,20 @@ dev := typescript/tsconfig.dev.json
 tsc := node_modules/.bin/tsc
 mocha := node_modules/.bin/mocha
 
+# Docker
+image_name := library
+image_tag := library
+image_repo := brontosaurus/library
+
+.IGNORE: clean-linux kill stop
+
 main: run
 
 dev:
 	@echo "[INFO] Building for development"
 	@NODE_ENV=development $(tsc) --p $(dev)
 
-build: clean
+build: clean-linux
 	@echo "[INFO] Building for production"
 	@NODE_ENV=production $(tsc) --p $(build)
 
@@ -43,12 +50,26 @@ install-prod:
 	@echo "[INFO] Installing Dependencies"
 	@yarn install --production=true
 
-clean:
-ifeq ($(OS), Windows_NT)
-	@echo "[INFO] Skipping"
-else
+clean-linux:
 	@echo "[INFO] Cleaning dist files"
-	@rm -rf dist
-	@rm -rf .nyc_output
 	@rm -rf coverage
-endif
+
+docker: build
+	@echo "[INFO] Create docker image"
+	@docker build -t $(image_name) -f Dockerfile ./
+
+kill:
+	@echo "[INFO] Killing docker image"
+	@docker kill $(image_tag)
+
+stop: kill
+	@echo "[INFO] Stopping docker image"
+	@docker rm $(image_tag)
+
+tag:
+	@echo "[INFO] Mark docker tag"
+	@docker tag $(image_name) $(image_repo):0.0.1
+
+publish: stop tag
+	@echo "[INFO] Publish docker image"
+	@docker push $(image_repo):0.0.1
