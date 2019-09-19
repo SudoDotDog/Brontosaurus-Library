@@ -38,7 +38,8 @@ export class ArticleRoute extends BrontosaurusRoute {
             }
 
             const markdown: string = this._config.joinPath(article.path);
-            const html: string | null = await renderArticle(markdown);
+            const template: string = article.template ? this._config.joinPath(article.template) : this._config.getPublicArticleTemplate();
+            const html: string | null = await renderArticle(markdown, template);
 
             if (!html) {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, article.name, markdown);

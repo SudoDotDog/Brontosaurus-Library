@@ -12,6 +12,7 @@ COPY ./yarn.lock .
 
 RUN yarn install --production=true
 
+COPY ./template ./template
 COPY ./app ./app
 
 CMD [ "node", "app/index.js" ]

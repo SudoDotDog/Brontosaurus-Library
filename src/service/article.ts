@@ -5,18 +5,30 @@
  */
 
 import { pathExists, readTextFile } from "@sudoo/io";
+import { render } from "ejs";
 import { Converter } from "showdown";
 
-export const renderArticle = async (path: string): Promise<string | null> => {
+export const renderArticle = async (articlePath: string, templatePath: string): Promise<string | null> => {
 
-    const exist: boolean = await pathExists(path);
+    const exist: boolean = await pathExists(articlePath);
 
     if (!exist) {
         return null;
     }
 
-    const content: string = await readTextFile(path);
-    const converter: Converter = new Converter();
+    const templateExist: boolean = await pathExists(templatePath);
 
-    return converter.makeHtml(content);
+    if (!templateExist) {
+        return null;
+    }
+
+    const content: string = await readTextFile(articlePath);
+    const template: string = await readTextFile(templatePath);
+
+    const converter: Converter = new Converter();
+    const html: string = converter.makeHtml(content);
+
+    return render(template, {
+        article: html,
+    });
 };

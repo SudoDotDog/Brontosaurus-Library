@@ -4,6 +4,7 @@
  * @description Conf
  */
 
+import * as Path from "path";
 import { ERROR_CODE, panic } from "./panic";
 
 export const pageLimit: number = 20;
@@ -21,6 +22,11 @@ export const getConfigPath = (): string => {
     }
 
     throw panic.code(ERROR_CODE.ENVIRONMENT_CONFIG_PATH);
+};
+
+export const getDefaultPublicArticleTemplate = (): string => {
+
+    return Path.join(__dirname, '..', '..', 'template', 'article-public.ejs');
 };
 
 export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';

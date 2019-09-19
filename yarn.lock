@@ -18,18 +18,6 @@
     esutils "^2.0.2"
     js-tokens "^4.0.0"
 
-"@brontosaurus/core@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/core/-/core-2.3.0.tgz#3781d2926cded60eac13482a44ef71723f482bcc"
-  integrity sha512-QYBFtiSPggv8qnYK2leZN4mvhTZ2bfYC3J2V2ORW0qLoaS+kZ/ODoyE0PoLr0EfUUUV9bgk/swbo5IC5aOiC/w==
-  dependencies:
-    "@brontosaurus/definition" "^2.3.0"
-
-"@brontosaurus/definition@^2.3.0":
-  version "2.3.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-2.3.0.tgz#519bc1ea020c3e0f9ae15837af720520a151d8a4"
-  integrity sha512-varRpzKFUyvj1B6ftBvMbBubCp5mVVgTHqy/ll9ig0ZeXux05q6xSOjKKWlcb/g3/xTem9H6/SGYEJpjvBvS0g==
-
 "@sudoo/bark@^2.7.1":
   version "2.7.1"
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.1.tgz#84b9db0be3aa7b4d6896ced81d9fa9aac96578ef"
@@ -114,6 +102,11 @@
   integrity sha512-4r8qa0quOvh7lGD0pre62CAb1oni1OO6ecJLGCezTmhQ8Fz50Arx9RUszryR8KlgK6avuSXvviL6yWyViQABOg==
   dependencies:
     "@types/node" "*"
+
+"@types/ejs@^2.6.3":
+  version "2.6.3"
+  resolved "https://registry.yarnpkg.com/@types/ejs/-/ejs-2.6.3.tgz#b6509e9925d7eb5e95c8c73b6492e5baae7c1e6a"
+  integrity sha512-/F+qQ0Fr0Dr1YvHjX+FCvbba4sQ27RdCPDqmP/si0e1v1GOkbQ3VRBvZPSQM7NoQ3iz3SyiJVscCP2f0vKuIhQ==
 
 "@types/express-serve-static-core@*":
   version "4.16.9"
@@ -424,6 +417,11 @@ ee-first@1.1.1:
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/ee-first/-/ee-first-1.1.1.tgz#590c61156b0ae2f4f0255732a158b266bc56b21d"
   integrity sha1-WQxhFWsK4vTwJVcyoViyZrxWsh0=
+
+ejs@^2.7.1:
+  version "2.7.1"
+  resolved "https://registry.yarnpkg.com/ejs/-/ejs-2.7.1.tgz#5b5ab57f718b79d4aca9254457afecd36fa80228"
+  integrity sha512-kS/gEPzZs3Y1rRsbGX4UOSjtP/CeJP0CxSNZHYxGfVM/VgLcv0ZqM7C45YyTj2DI2g7+P9Dd24C+IMIg6D0nYQ==
 
 encodeurl@~1.0.2:
   version "1.0.2"
