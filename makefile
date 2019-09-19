@@ -18,7 +18,7 @@ build: clean
 
 run: dev
 	@NODE_ENV=development \
-	BRONTOSAURUS_DB=$(DB) \
+	BRONTOSAURUS_LIBRARY_CONFIG=$(DB) \
 	PORTAL_PATH="test_portal_path" \
 	node dist/index.js
 

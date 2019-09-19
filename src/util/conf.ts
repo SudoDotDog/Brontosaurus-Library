@@ -4,11 +4,23 @@
  * @description Conf
  */
 
+import { ERROR_CODE, panic } from "./panic";
+
 export const pageLimit: number = 20;
 
 export const getEnvGettingText = () => {
 
     return `<script>if(!window.env){window.env={}};window.env.PORTAL_PATH="${process.env.PORTAL_PATH}"</script>`;
+};
+
+export const getConfigPath = (): string => {
+
+    if (process.env.BRONTOSAURUS_LIBRARY_CONFIG) {
+
+        return String(process.env.BRONTOSAURUS_LIBRARY_CONFIG);
+    }
+
+    throw panic.code(ERROR_CODE.ENVIRONMENT_CONFIG_PATH);
 };
 
 export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';

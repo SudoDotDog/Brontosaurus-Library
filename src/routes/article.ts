@@ -5,6 +5,8 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
+import { ArticleAgent } from "../agent/article";
+import { ConfigAgent } from "../agent/config";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { ERROR_CODE, panic } from "../util/panic";
@@ -17,6 +19,9 @@ export class ArticleRoute extends BrontosaurusRoute {
     public readonly groups: SudooExpressHandler[] = [
         autoHook.wrap(this._articleHandler.bind(this), '/account/single - Single', true),
     ];
+
+    private readonly _article: ArticleAgent = ArticleAgent.instance;
+    private readonly _config: ConfigAgent = ConfigAgent.instance;
 
     private async _articleHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
