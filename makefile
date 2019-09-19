@@ -18,8 +18,8 @@ build: clean
 
 run: dev
 	@NODE_ENV=development \
-	BRONTOSAURUS_LIBRARY_CONFIG=$(DB) \
-	PORTAL_PATH="test_portal_path" \
+	BRONTOSAURUS_LIBRARY_CONFIG="./example/config.json" \
+	PORTAL_PATH=$(PP) \
 	node dist/index.js
 
 p-run: dev

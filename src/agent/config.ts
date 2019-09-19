@@ -6,15 +6,9 @@
 
 import * as Fs from "fs";
 import * as Path from "path";
+import { Article, LibraryConfig } from "../declare";
 import { getConfigPath } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
-import { Article } from "./article";
-
-export type LibraryConfig = {
-
-    readonly baseUrl: string;
-    readonly articles: Article[];
-};
 
 export class ConfigAgent {
 
@@ -25,21 +19,30 @@ export class ConfigAgent {
 
     private static readonly _instance: ConfigAgent = new ConfigAgent();
 
+    private readonly _configPath: string;
     private readonly _config: LibraryConfig;
 
     private constructor() {
 
-        this._config = this._getConfig();
+        this._configPath = Path.resolve(getConfigPath());
+        this._config = this._getConfig(this._configPath);
     }
 
-    public get config(): LibraryConfig {
+    public get basePath(): string {
 
-        return this._config;
+        if (Path.isAbsolute(this._config.basePath)) {
+            return this._config.basePath;
+        }
+
+        return Path.join(this._configPath, this._config.basePath);
     }
 
-    private _getConfig(): LibraryConfig {
+    public get articles(): Article[] {
 
-        const path: string = Path.resolve(getConfigPath());
+        return this._config.articles;
+    }
+
+    private _getConfig(path: string): LibraryConfig {
 
         if (!Fs.existsSync(path)) {
             throw panic.code(ERROR_CODE.CONFIG_PATH_NOT_EXIST, path);

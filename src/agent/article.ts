@@ -4,14 +4,8 @@
  * @description Article
  */
 
-export type Article = {
-
-    readonly name: string;
-    readonly path: string;
-    readonly private?: boolean;
-    readonly groups?: string[];
-    readonly groupMode?: 'All' | 'OneOf';
-};
+import { Article } from "../declare";
+import { ConfigAgent } from "./config";
 
 export class ArticleAgent {
 
@@ -23,10 +17,14 @@ export class ArticleAgent {
     private static readonly _instance: ArticleAgent = new ArticleAgent();
 
     private readonly _articles: Map<string, Article>;
+    private readonly _config: ConfigAgent;
 
     private constructor() {
 
         this._articles = new Map<string, Article>();
+        this._config = ConfigAgent.instance;
+
+        this.init(this._config.articles);
     }
 
     public init(articles: Article[]) {
@@ -35,5 +33,15 @@ export class ArticleAgent {
 
             this._articles.set(article.name, article);
         }
+    }
+
+    public getArticle(name: string): Article | null {
+
+        if (this._articles.has(name)) {
+
+            return this._articles.get(name) as Article;
+        }
+
+        return null;
     }
 }

@@ -1,0 +1,9 @@
+{
+    "basePath": ".",
+    "articles": [
+        {
+            "name": "hello",
+            "path": "hello.md"
+        }
+    ]
+}

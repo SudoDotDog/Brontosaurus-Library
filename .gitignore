@@ -16,6 +16,7 @@ lib-cov
 
 # App
 app
+dist
 
 # Coverage directory used by tools like istanbul
 coverage

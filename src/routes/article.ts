@@ -9,6 +9,7 @@ import { ArticleAgent } from "../agent/article";
 import { ConfigAgent } from "../agent/config";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
+import { Article } from "../declare";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ArticleRoute extends BrontosaurusRoute {
@@ -27,8 +28,15 @@ export class ArticleRoute extends BrontosaurusRoute {
 
         try {
 
-            const article: string = req.params.article;
+            const name: string = req.params.article;
 
+            const article: Article | null = this._article.getArticle(name);
+
+            if (!article) {
+                throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, name);
+            }
+
+            res.agent.raw(article);
         } catch (error) {
 
             this._log.error(`${req.path} - ${error.message} (${error.code})`);
