@@ -6,7 +6,7 @@
 
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
-import { LibraryRoutes } from './routes/import';
+import { LibraryRoutes } from './basic/import';
 import { isDevelopment } from './util/conf';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus-Library', '1');
