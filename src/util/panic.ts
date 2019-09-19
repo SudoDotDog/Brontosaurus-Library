@@ -15,6 +15,7 @@ export enum ERROR_CODE {
     ENVIRONMENT_CONFIG_PATH = 2005,
     CONFIG_PATH_NOT_EXIST = 2015,
 
+    FILE_NOT_FOUND = 3403,
     ARTICLE_NOT_FOUND = 3404,
 }
 
@@ -25,6 +26,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
     [ERROR_CODE.ENVIRONMENT_CONFIG_PATH]: 'Config Path Is Required Within Environment Variable',
     [ERROR_CODE.CONFIG_PATH_NOT_EXIST]: 'Config Path "{}" Not Exist',
 
+    [ERROR_CODE.FILE_NOT_FOUND]: 'File for article: "{}", at "{}" not found',
     [ERROR_CODE.ARTICLE_NOT_FOUND]: 'Article: "{}" not found',
 };
 

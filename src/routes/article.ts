@@ -10,6 +10,7 @@ import { ConfigAgent } from "../agent/config";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
+import { renderArticle } from "../service/article";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ArticleRoute extends BrontosaurusRoute {
@@ -36,7 +37,14 @@ export class ArticleRoute extends BrontosaurusRoute {
                 throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, name);
             }
 
-            res.agent.raw(this._config.joinPath(article.path));
+            const markdown: string = this._config.joinPath(article.path);
+            const html: string | null = await renderArticle(markdown);
+
+            if (!html) {
+                throw panic.code(ERROR_CODE.FILE_NOT_FOUND, article.name, markdown);
+            }
+
+            res.agent.raw(html);
         } catch (error) {
 
             this._log.error(`${req.path} - ${error.message} (${error.code})`);
