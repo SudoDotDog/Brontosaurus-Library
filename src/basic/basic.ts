@@ -19,7 +19,6 @@ export abstract class BrontosaurusRoute implements ISudooExpressRoute {
     public onError(code: number, error: Error) {
 
         const err: ConnorError = error as any;
-        this._log.error(`${this.path} - ${error.message} (${code})`);
 
         return {
             code,
