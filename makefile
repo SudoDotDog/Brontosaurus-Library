@@ -50,8 +50,14 @@ install-prod:
 	@echo "[INFO] Installing Dependencies"
 	@yarn install --production=true
 
+clean: clean-linux
+	@echo "[INFO] Cleaning release files"
+	@NODE_ENV=development $(ts_node) script/clean-app.ts
+
 clean-linux:
 	@echo "[INFO] Cleaning dist files"
+	@rm -rf app
+	@rm -rf .nyc_output
 	@rm -rf coverage
 
 docker: build
