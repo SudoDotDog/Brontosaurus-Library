@@ -4,12 +4,10 @@
  * @description Index
  */
 
-import { connect } from '@brontosaurus/db';
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
-import * as Mongoose from "mongoose";
 import { LibraryRoutes } from './routes/import';
-import { BrontosaurusConfig, isDevelopment, readConfigEnvironment } from './util/conf';
+import { isDevelopment } from './util/conf';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus-Library', '1');
 
@@ -21,12 +19,6 @@ if (isDevelopment()) {
 }
 
 const app: SudooExpress = SudooExpress.create(setting);
-
-const config: BrontosaurusConfig = readConfigEnvironment();
-
-const db: Mongoose.Connection = connect(config.database);
-
-db.on('error', console.log.bind(console, 'connection error:'));
 
 // Health
 app.health('/health');
