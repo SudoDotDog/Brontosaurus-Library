@@ -29,4 +29,9 @@ export const getDefaultPublicArticleTemplate = (): string => {
     return Path.join(__dirname, '..', '..', 'template', 'article-public.ejs');
 };
 
+export const getDefaultNavigationTemplate = (): string => {
+
+    return Path.join(__dirname, '..', '..', 'template', 'navigation.ejs');
+};
+
 export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';

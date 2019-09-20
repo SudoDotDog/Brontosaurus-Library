@@ -7,14 +7,21 @@
 import { pathExists, readTextFile } from "@sudoo/io";
 import { render } from "ejs";
 import { Converter } from "showdown";
+import { CategoryAgent } from "../agent/category";
 import { ConfigAgent } from "../agent/config";
+import { Article } from "../declare";
 
 export const renderArticle = async (
-    articlePath: string,
-    templatePath: string,
+    article: Article,
 ): Promise<string | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
+    const category: CategoryAgent = CategoryAgent.instance;
+
+    const articlePath: string = config.joinPath(article.path);
+    const templatePath: string = article.template ? config.joinPath(article.template) : config.getPublicArticleTemplate();
+    const navigationPath: string = config.getNavigationTemplate();
+
     const exist: boolean = await pathExists(articlePath);
 
     if (!exist) {
@@ -34,6 +41,10 @@ export const renderArticle = async (
     const html: string = converter.makeHtml(content);
 
     return render(template, {
+
+        navigationPath,
+
+        tree: category.tree,
         title: config.title,
         article: html,
     });

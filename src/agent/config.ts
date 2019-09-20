@@ -7,7 +7,7 @@
 import * as Fs from "fs";
 import * as Path from "path";
 import { Article, Category, LibraryConfig } from "../declare";
-import { getConfigPath, getDefaultPublicArticleTemplate } from "../util/conf";
+import { getConfigPath, getDefaultPublicArticleTemplate, getDefaultNavigationTemplate } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ConfigAgent {
@@ -66,6 +66,17 @@ export class ConfigAgent {
         }
 
         return getDefaultPublicArticleTemplate();
+    }
+
+    public getNavigationTemplate(): string {
+
+        if (this._config.globalTemplates) {
+            if (this._config.globalTemplates.navigation) {
+                return this.joinPath(this._config.globalTemplates.navigation);
+            }
+        }
+
+        return getDefaultNavigationTemplate();
     }
 
     private _getConfig(path: string): LibraryConfig {

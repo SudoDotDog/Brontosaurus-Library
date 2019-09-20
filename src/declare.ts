@@ -26,6 +26,7 @@ export type Article = {
 export type GlobalTemplates = {
 
     readonly publicArticle?: string;
+    readonly navigation?: string;
 };
 
 export type LibraryConfig = {

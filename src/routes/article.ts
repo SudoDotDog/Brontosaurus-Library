@@ -38,15 +38,12 @@ export class ArticleRoute extends BrontosaurusRoute {
                 throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, stack.join('/'));
             }
 
-            const markdown: string = this._config.joinPath(article.path);
-            const template: string = article.template ? this._config.joinPath(article.template) : this._config.getPublicArticleTemplate();
-            const html: string | null = await renderArticle(markdown, template);
+            const html: string | null = await renderArticle(article);
 
             if (!html) {
-                throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'), markdown);
+                const templatePath: string = article.template ? this._config.joinPath(article.template) : this._config.getPublicArticleTemplate();
+                throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'), templatePath);
             }
-
-            console.log(this._category.tree.toString());
 
             res.agent.raw(html);
         } catch (error) {
