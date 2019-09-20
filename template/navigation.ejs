@@ -1,23 +1,35 @@
 <style>
-    .test {
-        color: red;
+    .category {
+        font-weight: bold;
+        font-size: 18px;
+        margin-top: 10px;
+    }
+
+    .sub-category {
+        padding-top: 10px;
+        padding-left: 10px;
+    }
+
+    .article {
+        font-weight: normal;
+        font-size: 16px;
     }
 </style>
-<% renderTree = function(tree) { %>
-<% tree.children.forEach(function (child) { console.log(1, child.title); %>
-<div>
-    <%- child.title %>
-    <% child.articles.forEach(function (article) { %>
-    <div>
-        Title <%- article.title %>
+
+<% renderTrees = function(trees) { %>
+<% trees.forEach(function (child) { %>
+<div class="category">
+    <%= child.title %>
+    <div class="sub-category">
+        <% child.articles.forEach(function (article) { %>
+        <div class="article">
+            <%= article.title %>
+        </div>
+        <% }); %>
+        <%- renderTrees(child.children); %>
     </div>
-    <% }); %>
-    <% child.children.forEach(function (sub) {console.log(2, sub.title);
-        renderTree(sub)
-    }); %>
 </div>
 <% }); %>
 <% } %>
-<div class="test">
-    <% renderTree(tree) %>
-</div>
+
+<% renderTrees(trees) %>
