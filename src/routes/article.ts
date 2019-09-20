@@ -46,7 +46,7 @@ export class ArticleRoute extends BrontosaurusRoute {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'), markdown);
             }
 
-            console.log(this._category.tree);
+            console.log(this._category.tree.toString());
 
             res.agent.raw(html);
         } catch (error) {

@@ -35,6 +35,21 @@ export class CategoryTree {
         this._children = [];
     }
 
+    public get name(): string {
+
+        return this._name;
+    }
+
+    public get title(): string {
+
+        return this._title;
+    }
+
+    public get isRoot(): boolean {
+
+        return this._isRoot;
+    }
+
     public category(category: Category): CategoryTree {
 
         for (const child of this._children) {
@@ -58,7 +73,9 @@ export class CategoryTree {
     public toString(): string {
 
         return [
-            `${'-'.repeat(this._level)}`,
+            `${'-'.repeat(this._level)} ${this._title}`,
+            ...this._articles.map((article: Article) => `${' '.repeat(this._level)}*${article.title}`),
+            ...this._children.map((tree: CategoryTree) => tree.toString()),
         ].join('\n');
     }
 }
