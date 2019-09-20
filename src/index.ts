@@ -6,6 +6,7 @@
 
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
+import * as CookieParser from "cookie-parser";
 import { LibraryRoutes } from './basic/import';
 import { isDevelopment } from './util/conf';
 
@@ -19,6 +20,7 @@ if (isDevelopment()) {
 }
 
 const app: SudooExpress = SudooExpress.create(setting);
+app.use(CookieParser());
 
 // Health
 app.health('/health');

@@ -45,6 +45,9 @@ export class ArticleRoute extends BrontosaurusRoute {
             }
 
             if (article.groups) {
+
+
+
                 const path = [
                     getPortalPath(),
                     '/',
