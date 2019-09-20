@@ -9,16 +9,39 @@ import { ERROR_CODE, panic } from "./panic";
 
 export const pageLimit: number = 20;
 
+// tslint:disable-next-line: variable-name
+
+
 export const getEnvGettingText = () => {
 
     return `<script>if(!window.env){window.env={}};window.env.PORTAL_PATH="${process.env.PORTAL_PATH}"</script>`;
 };
 
+export const getApplicationKey = (): string => {
+
+    if (process.env.BRONTOSAURUS_APPLICATION_KEY) {
+
+        return String(process.env.BRONTOSAURUS_APPLICATION_KEY);
+    }
+
+    throw panic.code(ERROR_CODE.ENVIRONMENT_APPLICATION_KEY);
+};
+
+export const getPublicKey = () => {
+
+    if (process.env.BRONTOSAURUS_PUBLIC_KEY) {
+
+        return String(process.env.BRONTOSAURUS_PUBLIC_KEY).replace(/\|\|/g, '\n');
+    }
+
+    throw panic.code(ERROR_CODE.ENVIRONMENT_PUBLIC_KEY);
+};
+
 export const getPortalPath = (): string => {
 
-    if (process.env.PORTAL_PATH) {
+    if (process.env.BRONTOSAURUS_PORTAL_PATH) {
 
-        return String(process.env.PORTAL_PATH);
+        return String(process.env.BRONTOSAURUS_PORTAL_PATH);
     }
 
     throw panic.code(ERROR_CODE.ENVIRONMENT_PORTAL_PATH);

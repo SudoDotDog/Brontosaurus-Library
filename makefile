@@ -27,7 +27,9 @@ run: dev
 	@NODE_ENV=development \
 	BRONTOSAURUS_LIBRARY_CONFIG="./example/config.json" \
 	BRONTOSAURUS_LIBRARY_PATH="http://localhost:9000" \
-	PORTAL_PATH=$(PP) \
+	BRONTOSAURUS_PORTAL_PATH=$(PP) \
+	BRONTOSAURUS_APPLICATION_KEY=$(AK) \
+	BRONTOSAURUS_PUBLIC_KEY="$(PK)" \
 	node dist/index.js
 
 p-run: dev

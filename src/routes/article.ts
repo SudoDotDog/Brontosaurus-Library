@@ -12,6 +12,7 @@ import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
 import { renderArticle } from "../service/article";
+import { verifyToken } from "../service/auth";
 import { getLibraryPath, getPortalPath } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
 
@@ -46,18 +47,25 @@ export class ArticleRoute extends BrontosaurusRoute {
 
             if (article.groups) {
 
+                const cookie: string | undefined = req.cookies.token;
 
+                if (!cookie) {
+                    const path = [
+                        getPortalPath(),
+                        '/',
+                        '?key=RPN_GO&cb=',
+                        getLibraryPath(),
+                        req.originalUrl,
+                    ].join('');
+                    res.agent.redirect(path);
+                    return;
+                }
 
-                const path = [
-                    getPortalPath(),
-                    '/',
-                    '?key=RPN_GO&cb=',
-                    getLibraryPath(),
-                    req.originalUrl,
-                ].join('');
-                console.log(req.cookies);
-                res.agent.redirect(path);
-                return;
+                const result: boolean = verifyToken(cookie, article.groups, article.groupMode || 'All');
+
+                if (!result) {
+                    throw panic.code(ERROR_CODE.INVALID_TOKEN);
+                }
             }
 
             const html: string | null = await renderArticle(article);
