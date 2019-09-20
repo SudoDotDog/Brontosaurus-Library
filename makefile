@@ -30,11 +30,11 @@ run: dev
 	BRONTOSAURUS_PORTAL_PATH=$(PP) \
 	BRONTOSAURUS_APPLICATION_KEY=$(AK) \
 	BRONTOSAURUS_PUBLIC_KEY="$(PK)" \
-	node dist/index.js
+	node app/index.js
 
 p-run: dev
 	@NODE_ENV=production \
-	node dist/index.js
+	node app/index.js
 
 tests:
 	@echo "[INFO] Testing with Mocha"
@@ -58,7 +58,7 @@ clean: clean-linux
 	@NODE_ENV=development $(ts_node) script/clean-app.ts
 
 clean-linux:
-	@echo "[INFO] Cleaning dist files"
+	@echo "[INFO] Cleaning build files"
 	@rm -rf app
 	@rm -rf .nyc_output
 	@rm -rf coverage
