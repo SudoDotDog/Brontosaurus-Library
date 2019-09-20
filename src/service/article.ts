@@ -11,7 +11,7 @@ import { CategoryAgent } from "../agent/category";
 import { ConfigAgent } from "../agent/config";
 import { Article } from "../declare";
 
-export const renderFourOFour = async (): Promise<string | null> => {
+export const renderFourOFour = async (authPath: string, loggedIn: boolean): Promise<string | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
 
@@ -27,6 +27,8 @@ export const renderFourOFour = async (): Promise<string | null> => {
 
     return render(template, {
 
+        authPath,
+        loggedIn,
         title: config.title,
     });
 };

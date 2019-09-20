@@ -35,7 +35,9 @@ export class ArticleRoute extends BrontosaurusRoute {
             const article: Article | null = this._article.getArticle(stack);
 
             if (!article) {
-                throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, stack.join('/'));
+                const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), false);
+                res.agent.raw(fourOFour);
+                return;
             }
 
             const logout: string | undefined = req.query.logout;
@@ -59,18 +61,16 @@ export class ArticleRoute extends BrontosaurusRoute {
                 const cookie: string | undefined = req.cookies.token;
 
                 if (!cookie) {
-                    const fourOFour: string = await this._renderFourOFour();
+                    const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), false);
                     res.agent.raw(fourOFour);
-                    // res.agent.redirect(buildAuthPath(req.path));
                     return;
                 }
 
                 const result: boolean = verifyToken(cookie as any, article.groups, article.groupMode || 'All');
 
                 if (!result) {
-                    const fourOFour: string = await this._renderFourOFour();
+                    const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), true);
                     res.agent.raw(fourOFour);
-                    // res.agent.redirect(buildAuthPath(req.path));
                     return;
                 }
             }
@@ -91,9 +91,9 @@ export class ArticleRoute extends BrontosaurusRoute {
         }
     }
 
-    private async _renderFourOFour(): Promise<string> {
+    private async _renderFourOFour(authPath: string, loggedIn: boolean): Promise<string> {
 
-        const fourOFour: string | null = await renderFourOFour();
+        const fourOFour: string | null = await renderFourOFour(authPath, loggedIn);
 
         if (!fourOFour) {
             throw panic.code(ERROR_CODE.FILE_NOT_FOUND, '404');

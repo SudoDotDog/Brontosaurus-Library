@@ -17,11 +17,45 @@
         padding: 0;
         margin: 0;
     }
+
+    .container {
+        display: flex;
+        padding: 62px;
+        height: 100vh;
+        flex-direction: column;
+        box-sizing: border-box;
+        justify-content: center;
+    }
+
+    .title {
+        font-size: 62px;
+        font-weight: bold;
+    }
+
+    .info {
+        margin-top: 10px;
+        font-size: 18px;
+    }
+
+    .login {
+        margin-top: 10px;
+        font-size: 18px;
+        text-decoration: none;
+        color: navy;
+    }
 </style>
 
 <body>
     <div class="container">
-        Not Found
+        <div class="title"><%- title.replace(/ /g, '\<br>') %></div>
+        <div class="info">404! Article Not Found Or Viewing Permission Required</div>
+        <a class="login" href="<%= authPath %>">
+            <%if (loggedIn) { %>
+            Click to Re-Login
+            <% } else { %>
+            Click to Login
+            <% } %>
+        </a>
     </div>
 </body>
 

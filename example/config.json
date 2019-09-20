@@ -42,6 +42,17 @@
         },
         {
             "categories": [
+                "introduction"
+            ],
+            "name": "permission-hello-more",
+            "title": "Permission Hello More",
+            "path": "hello.md",
+            "groups": [
+                "BRONTOSAURUS_SELF_CONTROL_MORE"
+            ]
+        },
+        {
+            "categories": [
                 "introduction",
                 "nested"
             ],
