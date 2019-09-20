@@ -49,15 +49,15 @@ export class CategoryAgent {
             for (const category of article.categories) {
 
                 const parsed: Category | null = this.lookUpCategory(category);
-
                 if (!parsed) {
                     return null;
                 }
-
                 current = current.category(parsed);
             }
 
-            current.addArticle(article);
+            if (!article.private) {
+                current.addArticle(article);
+            }
         }
 
         return this;

@@ -22,6 +22,15 @@
         },
         {
             "categories": [
+                "introduction"
+            ],
+            "name": "private-hello",
+            "title": "Private Hello",
+            "path": "hello.md",
+            "private": true
+        },
+        {
+            "categories": [
                 "introduction",
                 "nested"
             ],
