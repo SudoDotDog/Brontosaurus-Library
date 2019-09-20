@@ -7,9 +7,14 @@
 import { pathExists, readTextFile } from "@sudoo/io";
 import { render } from "ejs";
 import { Converter } from "showdown";
+import { ConfigAgent } from "../agent/config";
 
-export const renderArticle = async (articlePath: string, templatePath: string): Promise<string | null> => {
+export const renderArticle = async (
+    articlePath: string,
+    templatePath: string,
+): Promise<string | null> => {
 
+    const config: ConfigAgent = ConfigAgent.instance;
     const exist: boolean = await pathExists(articlePath);
 
     if (!exist) {
@@ -29,6 +34,7 @@ export const renderArticle = async (articlePath: string, templatePath: string): 
     const html: string = converter.makeHtml(content);
 
     return render(template, {
+        title: config.title,
         article: html,
     });
 };

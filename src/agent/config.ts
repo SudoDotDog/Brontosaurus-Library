@@ -28,6 +28,11 @@ export class ConfigAgent {
         this._config = this._getConfig(this._configPath);
     }
 
+    public get title(): string {
+
+        return this._config.title;
+    }
+
     public get basePath(): string {
 
         if (Path.isAbsolute(this._config.basePath)) {
