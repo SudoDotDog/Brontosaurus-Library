@@ -10,6 +10,7 @@ import { Converter } from "showdown";
 import { CategoryAgent } from "../agent/category";
 import { ConfigAgent } from "../agent/config";
 import { Article } from "../declare";
+import { getLibraryPath } from "../util/conf";
 
 export const renderFourOFour = async (authPath: string, loggedIn: boolean): Promise<string | null> => {
 
@@ -28,6 +29,7 @@ export const renderFourOFour = async (authPath: string, loggedIn: boolean): Prom
     return render(template, {
 
         authPath,
+        indexPath: getLibraryPath(),
         loggedIn,
         title: config.title,
     });
@@ -120,4 +122,3 @@ export const renderIndex = async (): Promise<string | null> => {
         article: html,
     });
 };
-

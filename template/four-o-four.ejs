@@ -50,13 +50,19 @@
     <div class="container">
         <div class="title"><%- title.replace(/ /g, '\<br>') %></div>
         <div class="info">404! Article Not Found Or Viewing Permission Required</div>
-        <a class="login" href="<%= authPath %>">
-            <%if (loggedIn) { %>
-            Click to Re-Login
-            <% } else { %>
-            Click to Login
-            <% } %>
-        </a>
+        <div>
+            <a class="login" href="<%= authPath %>">
+                <%if (loggedIn) { %>
+                Click to ReLogin
+                <% } else { %>
+                Click to Login
+                <% } %>
+            </a>
+            Or Go Back to
+            <a class="login" href="<%= indexPath %>">
+                The Index
+            </a>
+        </div>
     </div>
 </body>
 
