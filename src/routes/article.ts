@@ -13,6 +13,7 @@ import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
 import { renderArticle } from "../service/article";
 import { ERROR_CODE, panic } from "../util/panic";
+import { getPortalPath, getLibraryPath } from "../util/conf";
 
 export class ArticleRoute extends BrontosaurusRoute {
 
@@ -36,6 +37,24 @@ export class ArticleRoute extends BrontosaurusRoute {
 
             if (!article) {
                 throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, stack.join('/'));
+            }
+
+            const token: string | undefined = req.query.token;
+            if (token) {
+                res.cookie('token', token);
+            }
+
+            if (article.groups) {
+                const path = [
+                    getPortalPath(),
+                    '/',
+                    '?key=RPN_GO&cb=',
+                    getLibraryPath(),
+                    req.originalUrl,
+                ].join('');
+                console.log(req.cookies);
+                res.agent.redirect(path);
+                return;
             }
 
             const html: string | null = await renderArticle(article);

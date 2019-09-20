@@ -14,6 +14,26 @@ export const getEnvGettingText = () => {
     return `<script>if(!window.env){window.env={}};window.env.PORTAL_PATH="${process.env.PORTAL_PATH}"</script>`;
 };
 
+export const getPortalPath = (): string => {
+
+    if (process.env.PORTAL_PATH) {
+
+        return String(process.env.PORTAL_PATH);
+    }
+
+    throw panic.code(ERROR_CODE.ENVIRONMENT_PORTAL_PATH);
+};
+
+export const getLibraryPath = (): string => {
+
+    if (process.env.BRONTOSAURUS_LIBRARY_PATH) {
+
+        return String(process.env.BRONTOSAURUS_LIBRARY_PATH);
+    }
+
+    throw panic.code(ERROR_CODE.ENVIRONMENT_PORTAL_PATH);
+};
+
 export const getConfigPath = (): string => {
 
     if (process.env.BRONTOSAURUS_LIBRARY_CONFIG) {

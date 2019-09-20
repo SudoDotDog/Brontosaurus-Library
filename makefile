@@ -26,6 +26,7 @@ build: clean-linux
 run: dev
 	@NODE_ENV=development \
 	BRONTOSAURUS_LIBRARY_CONFIG="./example/config.json" \
+	BRONTOSAURUS_LIBRARY_PATH="http://localhost:9000" \
 	PORTAL_PATH=$(PP) \
 	node dist/index.js
 

@@ -12,7 +12,10 @@ export enum ERROR_CODE {
 
     NOT_FOUND = 1404,
 
+    ENVIRONMENT_PORTAL_PATH = 2004,
     ENVIRONMENT_CONFIG_PATH = 2005,
+    ENVIRONMENT_LIBRARY_PATH = 2006,
+
     CONFIG_PATH_NOT_EXIST = 2015,
 
     FILE_NOT_FOUND = 3403,
@@ -23,7 +26,9 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
     [ERROR_CODE.NOT_FOUND]: 'Article Not Found',
 
+    [ERROR_CODE.ENVIRONMENT_PORTAL_PATH]: 'Portal Path Is Required Within Environment Variable',
     [ERROR_CODE.ENVIRONMENT_CONFIG_PATH]: 'Config Path Is Required Within Environment Variable',
+    [ERROR_CODE.ENVIRONMENT_LIBRARY_PATH]: 'Library Path Is Required Within Environment Variable',
     [ERROR_CODE.CONFIG_PATH_NOT_EXIST]: 'Config Path "{}" Not Exist',
 
     [ERROR_CODE.FILE_NOT_FOUND]: 'File for article: "{}", at "{}" not found',
