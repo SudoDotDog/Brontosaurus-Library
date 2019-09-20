@@ -12,8 +12,7 @@ import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
 import { renderArticle } from "../service/article";
-import { verifyToken } from "../service/auth";
-import { getLibraryPath, getPortalPath } from "../util/conf";
+import { buildAuthPath, buildBufferPath, verifyToken } from "../service/auth";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ArticleRoute extends BrontosaurusRoute {
@@ -41,8 +40,11 @@ export class ArticleRoute extends BrontosaurusRoute {
             }
 
             const token: string | undefined = req.query.token;
+
             if (token) {
                 res.cookie('token', token);
+                res.agent.redirect(buildBufferPath(req.path));
+                return;
             }
 
             if (article.groups) {
@@ -50,21 +52,15 @@ export class ArticleRoute extends BrontosaurusRoute {
                 const cookie: string | undefined = req.cookies.token;
 
                 if (!cookie) {
-                    const path = [
-                        getPortalPath(),
-                        '/',
-                        '?key=RPN_GO&cb=',
-                        getLibraryPath(),
-                        req.originalUrl,
-                    ].join('');
-                    res.agent.redirect(path);
+                    res.agent.redirect(buildAuthPath(req.path));
                     return;
                 }
 
-                const result: boolean = verifyToken(cookie, article.groups, article.groupMode || 'All');
+                const result: boolean = verifyToken(cookie as any, article.groups, article.groupMode || 'All');
 
                 if (!result) {
-                    throw panic.code(ERROR_CODE.INVALID_TOKEN);
+                    res.agent.redirect(buildAuthPath(req.path));
+                    return;
                 }
             }
 

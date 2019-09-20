@@ -16,7 +16,6 @@ export const auth: Authorization = Authorization.create(
 export const verifyToken = (principal: string, groups: string[], mode: 'All' | 'OneOf'): boolean => {
 
     const token: AuthToken | null = auth.token(principal);
-    console.log(principal, token);
 
     if (token && token.authenticate()) {
 
@@ -41,6 +40,16 @@ export const buildAuthPath = (originalUrl: string): string => {
         '?key=',
         getApplicationKey(),
         '&cb=',
+        getLibraryPath(),
+        originalUrl,
+    ].join('');
+
+    return path;
+};
+
+export const buildBufferPath = (originalUrl: string): string => {
+
+    const path = [
         getLibraryPath(),
         originalUrl,
     ].join('');
