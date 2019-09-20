@@ -5,12 +5,10 @@
  */
 
 import * as Path from "path";
+import { LibraryConfig } from "../declare";
 import { ERROR_CODE, panic } from "./panic";
 
 export const pageLimit: number = 20;
-
-// tslint:disable-next-line: variable-name
-
 
 export const getEnvGettingText = () => {
 
@@ -83,3 +81,25 @@ export const getDefaultNavigationTemplate = (): string => {
 };
 
 export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';
+
+// tslint:disable-next-line: variable-name
+export const Throwable_VerifyConfig = (config: LibraryConfig): void => {
+
+    if (!Array.isArray(config.articles)) {
+        throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Articles");
+    }
+
+    if (!config.index) {
+        throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Index");
+    }
+
+    for (const article of config.articles) {
+        if (!Array.isArray(article.categories)) {
+            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Articles - Catagories");
+        }
+        if (!article.name || !article.path || !article.title) {
+            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Articles - Others");
+        }
+    }
+    return;
+};

@@ -33,6 +33,7 @@ export type GlobalTemplates = {
 export type LibraryConfig = {
 
     readonly title: string;
+    readonly index: string;
     readonly basePath: string;
 
     readonly globalTemplates: GlobalTemplates;

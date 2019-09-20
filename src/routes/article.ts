@@ -6,18 +6,16 @@
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { ArticleAgent } from "../agent/article";
-import { CategoryAgent } from "../agent/category";
-import { ConfigAgent } from "../agent/config";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
-import { renderArticle, renderFourOFour } from "../service/article";
+import { renderArticle, renderFourOFour, renderIndex } from "../service/article";
 import { buildAuthPath, buildBufferPath, verifyToken } from "../service/auth";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ArticleRoute extends BrontosaurusRoute {
 
-    public readonly path: string = '*';
+    public readonly path: string = '/*';
     public readonly mode: ROUTE_MODE = ROUTE_MODE.GET;
 
     public readonly groups: SudooExpressHandler[] = [
@@ -25,11 +23,17 @@ export class ArticleRoute extends BrontosaurusRoute {
     ];
 
     private readonly _article: ArticleAgent = ArticleAgent.instance;
-    private readonly _config: ConfigAgent = ConfigAgent.instance;
 
     private async _articleHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
         try {
+
+            if (req.path === '/') {
+
+                const indexPage: string | null = await renderIndex();
+                res.agent.raw(indexPage);
+                return;
+            }
 
             const stack: string[] = req.path.split('/').filter(Boolean);
             const article: Article | null = this._article.getArticle(stack);

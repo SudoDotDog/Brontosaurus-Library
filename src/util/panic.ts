@@ -10,6 +10,7 @@ export const MODULE_NAME = 'Brontosaurus-Library';
 
 export enum ERROR_CODE {
 
+    INVALID_LIBRARY_CONFIG = 1000,
     NOT_FOUND = 1404,
 
     ENVIRONMENT_PORTAL_PATH = 2004,
@@ -17,7 +18,6 @@ export enum ERROR_CODE {
     ENVIRONMENT_LIBRARY_PATH = 2006,
     ENVIRONMENT_APPLICATION_KEY = 2007,
     ENVIRONMENT_PUBLIC_KEY = 2008,
-
 
     CONFIG_PATH_NOT_EXIST = 2015,
 
@@ -29,6 +29,7 @@ export enum ERROR_CODE {
 
 export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
+    [ERROR_CODE.INVALID_LIBRARY_CONFIG]: 'Invalid Library Config: "{}"',
     [ERROR_CODE.NOT_FOUND]: 'Article Not Found',
 
     [ERROR_CODE.ENVIRONMENT_PORTAL_PATH]: 'Portal Path Is Required Within Environment Variable',

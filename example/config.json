@@ -1,6 +1,7 @@
 {
     "title": "Brontosaurus Library Example",
     "basePath": ".",
+    "index": "hello.md",
     "categories": [
         {
             "name": "introduction",
