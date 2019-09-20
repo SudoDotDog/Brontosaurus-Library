@@ -6,7 +6,7 @@
 
 import * as Fs from "fs";
 import * as Path from "path";
-import { Article, LibraryConfig } from "../declare";
+import { Article, Category, LibraryConfig } from "../declare";
 import { getConfigPath, getDefaultPublicArticleTemplate } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
 
@@ -40,6 +40,11 @@ export class ConfigAgent {
         }
 
         return Path.join(this._configPath, '..', this._config.basePath);
+    }
+
+    public get categories(): Category[] {
+
+        return this._config.categories;
     }
 
     public get articles(): Article[] {

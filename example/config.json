@@ -5,12 +5,25 @@
         {
             "name": "introduction",
             "title": "Introduction"
+        },
+        {
+            "name": "nested",
+            "title": "Nested"
         }
     ],
     "articles": [
         {
             "categories": [
                 "introduction"
+            ],
+            "name": "hello",
+            "title": "Hello",
+            "path": "hello.md"
+        },
+        {
+            "categories": [
+                "introduction",
+                "nested"
             ],
             "name": "hello",
             "title": "Hello",

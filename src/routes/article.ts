@@ -6,6 +6,7 @@
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { ArticleAgent } from "../agent/article";
+import { CategoryAgent } from "../agent/category";
 import { ConfigAgent } from "../agent/config";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
@@ -23,6 +24,7 @@ export class ArticleRoute extends BrontosaurusRoute {
     ];
 
     private readonly _article: ArticleAgent = ArticleAgent.instance;
+    private readonly _category: CategoryAgent = CategoryAgent.instance;
     private readonly _config: ConfigAgent = ConfigAgent.instance;
 
     private async _articleHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
@@ -43,6 +45,8 @@ export class ArticleRoute extends BrontosaurusRoute {
             if (!html) {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'), markdown);
             }
+
+            console.log(this._category.tree);
 
             res.agent.raw(html);
         } catch (error) {
