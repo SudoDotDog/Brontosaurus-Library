@@ -25,6 +25,7 @@ export type Article = {
 
 export type GlobalTemplates = {
 
+    readonly fourOFour?: string;
     readonly publicArticle?: string;
     readonly navigation?: string;
 };

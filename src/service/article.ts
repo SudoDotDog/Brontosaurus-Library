@@ -11,6 +11,26 @@ import { CategoryAgent } from "../agent/category";
 import { ConfigAgent } from "../agent/config";
 import { Article } from "../declare";
 
+export const renderFourOFour = async (): Promise<string | null> => {
+
+    const config: ConfigAgent = ConfigAgent.instance;
+
+    const fourOFourPath: string = config.getFourOFourTemplate();
+
+    const exist: boolean = await pathExists(fourOFourPath);
+
+    if (!exist) {
+        return null;
+    }
+
+    const template: string = await readTextFile(fourOFourPath);
+
+    return render(template, {
+
+        title: config.title,
+    });
+};
+
 export const renderArticle = async (
     article: Article,
 ): Promise<string | null> => {

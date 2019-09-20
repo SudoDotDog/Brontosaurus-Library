@@ -67,6 +67,11 @@ export const getConfigPath = (): string => {
     throw panic.code(ERROR_CODE.ENVIRONMENT_CONFIG_PATH);
 };
 
+export const getDefaultFourOFourTemplate = (): string => {
+
+    return Path.join(__dirname, '..', '..', 'template', 'four-o-four.ejs');
+};
+
 export const getDefaultPublicArticleTemplate = (): string => {
 
     return Path.join(__dirname, '..', '..', 'template', 'article-public.ejs');

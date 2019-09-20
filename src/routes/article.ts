@@ -11,7 +11,7 @@ import { ConfigAgent } from "../agent/config";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
-import { renderArticle } from "../service/article";
+import { renderArticle, renderFourOFour } from "../service/article";
 import { buildAuthPath, buildBufferPath, verifyToken } from "../service/auth";
 import { ERROR_CODE, panic } from "../util/panic";
 
@@ -25,7 +25,6 @@ export class ArticleRoute extends BrontosaurusRoute {
     ];
 
     private readonly _article: ArticleAgent = ArticleAgent.instance;
-    private readonly _category: CategoryAgent = CategoryAgent.instance;
     private readonly _config: ConfigAgent = ConfigAgent.instance;
 
     private async _articleHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
@@ -37,6 +36,14 @@ export class ArticleRoute extends BrontosaurusRoute {
 
             if (!article) {
                 throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, stack.join('/'));
+            }
+
+            const logout: string | undefined = req.query.logout;
+
+            if (logout) {
+                res.cookie('token', '');
+                res.agent.redirect(buildBufferPath(req.path));
+                return;
             }
 
             const token: string | undefined = req.query.token;
@@ -52,14 +59,18 @@ export class ArticleRoute extends BrontosaurusRoute {
                 const cookie: string | undefined = req.cookies.token;
 
                 if (!cookie) {
-                    res.agent.redirect(buildAuthPath(req.path));
+                    const fourOFour: string = await this._renderFourOFour();
+                    res.agent.raw(fourOFour);
+                    // res.agent.redirect(buildAuthPath(req.path));
                     return;
                 }
 
                 const result: boolean = verifyToken(cookie as any, article.groups, article.groupMode || 'All');
 
                 if (!result) {
-                    res.agent.redirect(buildAuthPath(req.path));
+                    const fourOFour: string = await this._renderFourOFour();
+                    res.agent.raw(fourOFour);
+                    // res.agent.redirect(buildAuthPath(req.path));
                     return;
                 }
             }
@@ -67,8 +78,7 @@ export class ArticleRoute extends BrontosaurusRoute {
             const html: string | null = await renderArticle(article);
 
             if (!html) {
-                const templatePath: string = article.template ? this._config.joinPath(article.template) : this._config.getPublicArticleTemplate();
-                throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'), templatePath);
+                throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'));
             }
 
             res.agent.raw(html);
@@ -79,5 +89,16 @@ export class ArticleRoute extends BrontosaurusRoute {
         } finally {
             next();
         }
+    }
+
+    private async _renderFourOFour(): Promise<string> {
+
+        const fourOFour: string | null = await renderFourOFour();
+
+        if (!fourOFour) {
+            throw panic.code(ERROR_CODE.FILE_NOT_FOUND, '404');
+        }
+
+        return fourOFour;
     }
 }

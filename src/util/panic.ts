@@ -39,7 +39,7 @@ export const ERROR_LIST: Record<ERROR_CODE, string> = {
 
     [ERROR_CODE.CONFIG_PATH_NOT_EXIST]: 'Config Path "{}" Not Exist',
 
-    [ERROR_CODE.FILE_NOT_FOUND]: 'File for article: "{}", at "{}" not found',
+    [ERROR_CODE.FILE_NOT_FOUND]: 'File for article: "{}" not found',
     [ERROR_CODE.ARTICLE_NOT_FOUND]: 'Article: "{}" not found',
 
     [ERROR_CODE.INVALID_TOKEN]: 'Invalid Token',
