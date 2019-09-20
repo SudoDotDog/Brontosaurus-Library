@@ -35,6 +35,7 @@ export type LibraryConfig = {
     readonly title: string;
     readonly index: string;
     readonly basePath: string;
+    readonly favicon: string;
 
     readonly globalTemplates: GlobalTemplates;
 

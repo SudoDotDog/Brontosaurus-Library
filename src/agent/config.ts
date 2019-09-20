@@ -59,6 +59,11 @@ export class ConfigAgent {
         return this._config.articles;
     }
 
+    public get favicon(): string {
+
+        return this._config.favicon;
+    }
+
     public joinPath(url: string): string {
 
         return Path.join(this.basePath, url);

@@ -28,6 +28,7 @@ export const renderFourOFour = async (authPath: string, loggedIn: boolean): Prom
 
     return render(template, {
 
+        favicon: config.favicon,
         authPath,
         indexPath: getLibraryPath(),
         loggedIn,
@@ -74,6 +75,7 @@ export const renderArticle = async (
             target.name,
         ].join('/'),
 
+        favicon: config.favicon,
         tree: category.tree,
         title: config.title,
         article: html,
@@ -117,6 +119,7 @@ export const renderIndex = async (): Promise<string | null> => {
             target.name,
         ].join('/'),
 
+        favicon: config.favicon,
         tree: category.tree,
         title: config.title,
         article: html,

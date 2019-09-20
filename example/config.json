@@ -1,5 +1,6 @@
 {
     "title": "Brontosaurus Library Example",
+    "favicon": "https://raw.githubusercontent.com/SudoDotDog/Brontosaurus/master/icon/transparent/icon-512x512.png",
     "basePath": ".",
     "index": "hello.md",
     "categories": [

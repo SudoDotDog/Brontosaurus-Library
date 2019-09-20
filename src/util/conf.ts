@@ -93,6 +93,10 @@ export const Throwable_VerifyConfig = (config: LibraryConfig): void => {
         throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Index");
     }
 
+    if (!config.favicon) {
+        throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Favicon");
+    }
+
     for (const article of config.articles) {
         if (!Array.isArray(article.categories)) {
             throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Articles - Catagories");
