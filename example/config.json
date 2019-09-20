@@ -1,8 +1,18 @@
 {
     "basePath": ".",
+    "categories": [
+        {
+            "name": "introduction",
+            "title": "Introduction"
+        }
+    ],
     "articles": [
         {
+            "categories": [
+                "introduction"
+            ],
             "name": "hello",
+            "title": "Hello",
             "path": "hello.md"
         }
     ]

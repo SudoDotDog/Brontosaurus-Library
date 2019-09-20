@@ -31,15 +31,17 @@ export class ArticleAgent {
 
         for (const article of articles) {
 
-            this._articles.set(article.name, article);
+            const query: string = [...article.categories, article.name].join('/');
+            this._articles.set(query, article);
         }
     }
 
-    public getArticle(name: string): Article | null {
+    public getArticle(stack: string[]): Article | null {
 
-        if (this._articles.has(name)) {
+        const query: string = stack.join('/');
+        if (this._articles.has(query)) {
 
-            return this._articles.get(name) as Article;
+            return this._articles.get(query) as Article;
         }
 
         return null;

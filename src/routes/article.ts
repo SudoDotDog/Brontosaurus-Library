@@ -15,11 +15,11 @@ import { ERROR_CODE, panic } from "../util/panic";
 
 export class ArticleRoute extends BrontosaurusRoute {
 
-    public readonly path: string = '/r/:article';
+    public readonly path: string = '*';
     public readonly mode: ROUTE_MODE = ROUTE_MODE.GET;
 
     public readonly groups: SudooExpressHandler[] = [
-        autoHook.wrap(this._articleHandler.bind(this), '/account/single - Single', true),
+        autoHook.wrap(this._articleHandler.bind(this), 'Article', true),
     ];
 
     private readonly _article: ArticleAgent = ArticleAgent.instance;
@@ -29,12 +29,11 @@ export class ArticleRoute extends BrontosaurusRoute {
 
         try {
 
-            const name: string = req.params.article;
-
-            const article: Article | null = this._article.getArticle(name);
+            const stack: string[] = req.path.split('/').filter(Boolean);
+            const article: Article | null = this._article.getArticle(stack);
 
             if (!article) {
-                throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, name);
+                throw panic.code(ERROR_CODE.ARTICLE_NOT_FOUND, stack.join('/'));
             }
 
             const markdown: string = this._config.joinPath(article.path);
@@ -42,7 +41,7 @@ export class ArticleRoute extends BrontosaurusRoute {
             const html: string | null = await renderArticle(markdown, template);
 
             if (!html) {
-                throw panic.code(ERROR_CODE.FILE_NOT_FOUND, article.name, markdown);
+                throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'), markdown);
             }
 
             res.agent.raw(html);

@@ -4,8 +4,16 @@
  * @description Declare
  */
 
+export type Category = {
+
+    readonly name: string;
+    readonly title: string;
+};
+
 export type Article = {
 
+    readonly categories: string[];
+    readonly title: string;
     readonly name: string;
     readonly path: string;
 
@@ -26,5 +34,6 @@ export type LibraryConfig = {
 
     readonly globalTemplates: GlobalTemplates;
 
+    readonly categories: Category[];
     readonly articles: Article[];
 };
