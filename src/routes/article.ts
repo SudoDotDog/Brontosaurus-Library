@@ -12,8 +12,8 @@ import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
 import { renderArticle } from "../service/article";
+import { getLibraryPath, getPortalPath } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
-import { getPortalPath, getLibraryPath } from "../util/conf";
 
 export class ArticleRoute extends BrontosaurusRoute {
 
