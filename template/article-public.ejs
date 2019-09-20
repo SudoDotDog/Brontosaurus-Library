@@ -10,10 +10,21 @@
     </title>
 </head>
 
+<style>
+    .container {
+        display: grid;
+        grid-template-areas:
+            "navigation article";
+        column-gap: 5px;
+        grid-template-columns: auto 1fr;
+    }
+</style>
+
 <body>
-    <div>
-        <%- include(navigationPath, {tree: tree}); %>
-        <div><%- article %></div>
+    <div class="container">
+        <div style="grid-area: navigation; width: 20vw; max-width: 300px; min-width: 200px;">
+            <%- include(navigationPath, {tree: tree}); %></div>
+        <div style="grid-area: article"><%- article %></div>
     </div>
 </body>
 

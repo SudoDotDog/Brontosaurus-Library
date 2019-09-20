@@ -1,3 +1,23 @@
+<style>
+    .test {
+        color: red;
+    }
+</style>
+<% renderTree = function(tree) { %>
+<% tree.children.forEach(function (child) { console.log(1, child.title); %>
 <div>
-    <%- tree.toString() %>
+    <%- child.title %>
+    <% child.articles.forEach(function (article) { %>
+    <div>
+        Title <%- article.title %>
+    </div>
+    <% }); %>
+    <% child.children.forEach(function (sub) {console.log(2, sub.title);
+        renderTree(sub)
+    }); %>
+</div>
+<% }); %>
+<% } %>
+<div class="test">
+    <% renderTree(tree) %>
 </div>

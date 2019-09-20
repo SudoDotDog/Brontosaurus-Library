@@ -50,6 +50,16 @@ export class CategoryTree {
         return this._isRoot;
     }
 
+    public get articles(): Article[] {
+
+        return this._articles;
+    }
+
+    public get children(): CategoryTree[] {
+
+        return this._children;
+    }
+
     public category(category: Category): CategoryTree {
 
         for (const child of this._children) {
