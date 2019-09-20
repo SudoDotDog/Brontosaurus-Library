@@ -7,7 +7,7 @@
 import * as Fs from "fs";
 import * as Path from "path";
 import { Article, Category, LibraryConfig } from "../declare";
-import { getConfigPath, getDefaultPublicArticleTemplate, getDefaultNavigationTemplate } from "../util/conf";
+import { getConfigPath, getDefaultNavigationTemplate, getDefaultPublicArticleTemplate } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ConfigAgent {

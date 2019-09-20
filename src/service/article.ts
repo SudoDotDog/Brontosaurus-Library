@@ -44,6 +44,12 @@ export const renderArticle = async (
 
         navigationPath,
 
+        parseLink: (target: Article) => [
+            '',
+            ...target.categories,
+            target.name,
+        ].join('/'),
+
         tree: category.tree,
         title: config.title,
         article: html,

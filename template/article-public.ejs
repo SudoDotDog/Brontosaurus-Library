@@ -11,8 +11,17 @@
 </head>
 
 <style>
+    html,
+    body,
+    div {
+        padding: 0;
+        margin: 0;
+    }
+
     .container {
-        margin: 15px;
+        box-sizing: border-box;
+        width: 100%;
+        padding: 15px;
         display: grid;
         grid-template-areas:
             "title article"
@@ -43,7 +52,10 @@
 <body>
     <div class="container">
         <div class="title-area"><%- title.replace(/ /g, '\<br>') %></div>
-        <div class="navigation-area"><%- include(navigationPath, {trees: tree.children, path: navigationPath}); %></div>
+        <div class="navigation-area"><%- include(navigationPath, {
+            trees: tree.children,
+            parseLink: parseLink,
+        }); %></div>
         <div style="grid-area: article"><%- article %></div>
     </div>
 </body>
