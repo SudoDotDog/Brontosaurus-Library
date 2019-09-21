@@ -33,12 +33,25 @@
 
     .title-area {
         grid-area: title;
-        line-height: 35px;
-        font-size: 30px;
-        font-weight: bold;
         width: 20vw;
         max-width: 300px;
         min-width: 200px;
+
+        display: flex;
+    }
+
+    .title {
+        line-height: 35px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .expend-button {
+        flex: 1;
+        display: none;
+        text-align: right;
+        margin-right: 50px;
+        font-size: 50px;
     }
 
     .navigation-area {
@@ -56,6 +69,16 @@
                 "article navigation";
             grid-template-columns: 100vw auto;
             grid-template-rows: 1fr auto;
+        }
+
+        .title-area {
+            width: 100vw;
+            max-width: 100vw;
+            min-width: 100vw;
+        }
+
+        .expend-button {
+            display: block;
         }
 
         .navigation-area {
@@ -80,8 +103,8 @@
 <body>
     <div class="container">
         <div class="title-area">
-            <%- title.replace(/ /g, '\<br>') %>
-            <div onclick="document.getElementById('navigation').classList.add('open')">Icon</div>
+            <div class="title"><%- title.replace(/ /g, '\<br>') %></div>
+            <div class="expend-button" onclick="document.getElementById('navigation').classList.add('open')">⇋</div>
         </div>
         <div id="navigation" class="navigation-area">
             <%- include(navigationPath, {
