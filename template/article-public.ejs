@@ -47,6 +47,14 @@
         max-width: 300px;
         min-width: 200px;
     }
+
+    @media only screen and (max-width: 1000px) {
+        .container {
+            grid-template-areas:
+                "navigation title"
+                "navigation article";
+        }
+    }
 </style>
 
 <body>
