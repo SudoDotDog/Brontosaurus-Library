@@ -55,6 +55,14 @@
         font-size: 50px;
     }
 
+    .cancel-button {
+        display: none;
+        font-weight: bold;
+        font-size: 50px;
+        margin-left: 20px;
+        margin-top: 10px;
+    }
+
     .navigation-area {
         grid-area: navigation;
         width: 20vw;
@@ -83,6 +91,10 @@
         }
 
         .expend-button {
+            display: block;
+        }
+
+        .cancel-button {
             display: block;
         }
 
@@ -116,6 +128,7 @@
             <div class="expend-button" onclick="document.getElementById('navigation').classList.add('open')">⇋</div>
         </div>
         <div id="navigation" class="navigation-area">
+            <div class="cancel-button" onclick="document.getElementById('navigation').classList.remove('open')">⇋</div>
             <div class="navigation-content">
                 <%- include(navigationPath, {
                     trees: tree.children,
