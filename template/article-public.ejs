@@ -33,12 +33,34 @@
 
     .title-area {
         grid-area: title;
-        line-height: 35px;
-        font-size: 30px;
-        font-weight: bold;
         width: 20vw;
         max-width: 300px;
         min-width: 200px;
+
+        display: flex;
+    }
+
+    .title {
+        line-height: 35px;
+        font-size: 30px;
+        font-weight: bold;
+    }
+
+    .expend-button {
+        flex: 1;
+        display: none;
+        font-weight: bold;
+        text-align: right;
+        margin-right: 50px;
+        font-size: 50px;
+    }
+
+    .cancel-button {
+        display: none;
+        font-weight: bold;
+        font-size: 50px;
+        margin-left: 20px;
+        margin-top: 10px;
     }
 
     .navigation-area {
@@ -47,15 +69,73 @@
         max-width: 300px;
         min-width: 200px;
     }
+
+    .navigation-content {
+        padding: 0px;
+    }
+
+    @media only screen and (max-width: 1000px) {
+        .container {
+            overflow: hidden;
+            grid-template-areas:
+                "title navigation"
+                "article navigation";
+            grid-template-columns: 100vw auto;
+            grid-template-rows: 1fr auto;
+        }
+
+        .title-area {
+            width: 100vw;
+            max-width: 100vw;
+            min-width: 100vw;
+        }
+
+        .expend-button {
+            display: block;
+        }
+
+        .cancel-button {
+            display: block;
+        }
+
+        .navigation-content {
+            padding: 10px;
+        }
+
+        .navigation-area {
+            grid-area: navigation;
+            position: fixed;
+            background-color: white;
+            right: -100vw;
+            top: 0;
+            width: 100vw;
+            height: 100vh;
+            max-width: 100vw;
+            min-width: 100vw;
+            transition: 0.3s all;
+        }
+
+        .navigation-area.open {
+            right: 0;
+        }
+    }
 </style>
 
 <body>
     <div class="container">
-        <div class="title-area"><%- title.replace(/ /g, '\<br>') %></div>
-        <div class="navigation-area"><%- include(navigationPath, {
-            trees: tree.children,
-            parseLink: parseLink,
-        }); %></div>
+        <div class="title-area">
+            <div class="title"><%- title.replace(/ /g, '\<br>') %></div>
+            <div class="expend-button" onclick="document.getElementById('navigation').classList.add('open')">⇋</div>
+        </div>
+        <div id="navigation" class="navigation-area">
+            <div class="cancel-button" onclick="document.getElementById('navigation').classList.remove('open')">⇋</div>
+            <div class="navigation-content">
+                <%- include(navigationPath, {
+                    trees: tree.children,
+                    parseLink: parseLink,
+                }); %>
+            </div>
+        </div>
         <div style="grid-area: article"><%- article %></div>
     </div>
 </body>
