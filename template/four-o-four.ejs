@@ -41,7 +41,8 @@
         margin-top: 8px;
         font-size: 18px;
         text-decoration: none;
-        color: navy;
+        font-weight: bold;
+        color: blue;
     }
 </style>
 
@@ -52,14 +53,14 @@
         <div>
             <a class="login" href="<%= authPath %>">
                 <%if (loggedIn) { %>
-                Click to ReLogin
+                ReLogin
                 <% } else { %>
-                Click to Login
+                Login
                 <% } %>
             </a>
             Or Go Back to
             <a class="login" href="<%= indexPath %>">
-                The Index
+                Index
             </a>
         </div>
     </div>
