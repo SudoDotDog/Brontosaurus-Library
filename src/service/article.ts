@@ -124,5 +124,6 @@ export const renderIndex = async (): Promise<string | null> => {
         tree: category.tree,
         title: config.title,
         article: html,
+        author: '',
     });
 };

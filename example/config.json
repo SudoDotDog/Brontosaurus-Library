@@ -18,6 +18,7 @@
             "categories": [
                 "introduction"
             ],
+            "author": "joshua",
             "name": "hello",
             "title": "Hello",
             "path": "hello.md"
@@ -26,6 +27,7 @@
             "categories": [
                 "introduction"
             ],
+            "author": "joshua",
             "name": "private-hello",
             "title": "Private Hello",
             "path": "hello.md",
@@ -35,6 +37,7 @@
             "categories": [
                 "introduction"
             ],
+            "author": "joshua",
             "name": "permission-hello",
             "title": "Permission Hello",
             "path": "hello.md",
@@ -46,6 +49,7 @@
             "categories": [
                 "introduction"
             ],
+            "author": "joshua",
             "name": "permission-hello-more",
             "title": "Permission Hello More",
             "path": "hello.md",
@@ -58,6 +62,7 @@
                 "introduction",
                 "nested"
             ],
+            "author": "joshua",
             "name": "hello",
             "title": "Hello",
             "path": "hello.md"

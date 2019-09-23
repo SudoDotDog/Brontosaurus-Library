@@ -132,11 +132,11 @@
 
 <body>
     <div class="container">
-        <div class="title-area">
+        <header class="title-area">
             <div class="title"><%- title.replace(/ /g, '\<br>') %></div>
             <div class="expend-button" onclick="document.getElementById('navigation').classList.add('open')">⇋</div>
-        </div>
-        <div id="navigation" class="navigation-area">
+        </header>
+        <nav id="navigation" class="navigation-area">
             <div class="cancel-button" onclick="document.getElementById('navigation').classList.remove('open')">⇋</div>
             <div class="navigation-content">
                 <%- include(navigationPath, {
@@ -144,8 +144,8 @@
                     parseLink: parseLink,
                 }); %>
             </div>
-        </div>
-        <div class="article-area"><%- article %></div>
+        </nav>
+        <article class="article-area"><%- article %></article>
     </div>
 </body>
 

@@ -97,12 +97,18 @@ export const Throwable_VerifyConfig = (config: LibraryConfig): void => {
         throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Favicon");
     }
 
+    for (const category of config.categories) {
+        if (!category.name || !category.title) {
+            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, `Category ${category.name} - Others`);
+        }
+    }
+
     for (const article of config.articles) {
         if (!Array.isArray(article.categories)) {
-            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Articles - Catagories");
+            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, `Article ${article.name} - Catagories`);
         }
-        if (!article.name || !article.path || !article.title) {
-            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Articles - Others");
+        if (!article.name || !article.path || !article.title || !article.author) {
+            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, `Article ${article.name} - Others`);
         }
     }
     return;

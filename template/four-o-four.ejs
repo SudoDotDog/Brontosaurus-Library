@@ -65,9 +65,9 @@
 
 <body>
     <div class="container">
-        <div class="title"><%- title.replace(/ /g, '\<br>') %></div>
-        <div class="info">404! Article Not Found Or Viewing Permission Required</div>
-        <div>
+        <header class="title"><%- title.replace(/ /g, '\<br>') %></header>
+        <section class="info">404! Article Not Found Or Viewing Permission Required</section>
+        <nav>
             <a class="login" href="<%= authPath %>">
                 <%if (loggedIn) { %>
                 ReLogin
@@ -79,7 +79,7 @@
             <a class="login" href="<%= indexPath %>">
                 Index
             </a>
-        </div>
+        </nav>
     </div>
 </body>
 
