@@ -6,11 +6,11 @@
 
 import { SudooExpress, SudooExpressApplication } from '@sudoo/express';
 import { LOG_LEVEL, SudooLog } from '@sudoo/log';
-import * as CookieParser from "cookie-parser";
 import { LibraryRoutes } from './basic/import';
 import { isDevelopment } from './util/conf';
 
 const setting: SudooExpressApplication = SudooExpressApplication.create('Brontosaurus-Library', '1');
+setting.useCookieParser();
 
 if (isDevelopment()) {
     setting.allowCrossOrigin();
@@ -20,7 +20,6 @@ if (isDevelopment()) {
 }
 
 const app: SudooExpress = SudooExpress.create(setting);
-app.use(CookieParser());
 
 // Health
 app.health('/health');
