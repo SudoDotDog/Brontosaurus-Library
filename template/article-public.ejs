@@ -74,6 +74,10 @@
         padding: 0px;
     }
 
+    .article-area {
+        grid-area: article;
+    }
+
     @media only screen and (max-width: 1000px) {
         .container {
             overflow: hidden;
@@ -118,6 +122,10 @@
         .navigation-area.open {
             right: 0;
         }
+
+        .article-area {
+            margin-right: 30px;
+        }
     }
 </style>
 
@@ -136,7 +144,7 @@
                 }); %>
             </div>
         </div>
-        <div style="grid-area: article"><%- article %></div>
+        <div class="article-area"><%- article %></div>
     </div>
 </body>
 
