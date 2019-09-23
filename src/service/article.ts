@@ -79,6 +79,7 @@ export const renderArticle = async (
         tree: category.tree,
         title: config.title,
         article: html,
+        author: article.author,
     });
 };
 

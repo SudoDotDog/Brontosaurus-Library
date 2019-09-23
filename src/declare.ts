@@ -14,6 +14,7 @@ export type Article = {
 
     readonly categories: string[];
     readonly title: string;
+    readonly author: string;
     readonly name: string;
     readonly path: string;
 

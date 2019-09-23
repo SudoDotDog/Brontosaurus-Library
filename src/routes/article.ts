@@ -29,7 +29,6 @@ export class ArticleRoute extends BrontosaurusRoute {
         try {
 
             if (req.path === '/') {
-
                 const indexPage: string | null = await renderIndex();
                 res.agent.raw(indexPage);
                 return;
