@@ -6,11 +6,11 @@
 
 import { pathExists, readTextFile } from "@sudoo/io";
 import { render } from "ejs";
-import { Converter } from "showdown";
 import { CategoryAgent } from "../agent/category";
 import { ConfigAgent } from "../agent/config";
 import { Article } from "../declare";
 import { getLibraryPath } from "../util/conf";
+import { renderMarkdown } from "../util/markdown";
 
 export const renderFourOFour = async (authPath: string, loggedIn: boolean): Promise<string | null> => {
 
@@ -62,8 +62,7 @@ export const renderArticle = async (
     const content: string = await readTextFile(articlePath);
     const template: string = await readTextFile(templatePath);
 
-    const converter: Converter = new Converter();
-    const html: string = converter.makeHtml(content);
+    const html: string = renderMarkdown(content);
 
     return render(template, {
 
@@ -107,8 +106,7 @@ export const renderIndex = async (): Promise<string | null> => {
     const content: string = await readTextFile(articlePath);
     const template: string = await readTextFile(templatePath);
 
-    const converter: Converter = new Converter();
-    const html: string = converter.makeHtml(content);
+    const html: string = renderMarkdown(content);
 
     return render(template, {
 
