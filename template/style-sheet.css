@@ -1,0 +1,13 @@
+.style-sheet table {
+	border-spacing: 0;
+	border-collapse: collapse;
+}
+
+.style-sheet table td,
+.style-sheet table th {
+	border: 1px solid #dde1e1;
+	padding-left: 12px;
+	padding-right: 12px;
+	padding-top: 7px;
+	padding-top: 7px;
+}

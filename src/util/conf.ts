@@ -80,6 +80,11 @@ export const getDefaultNavigationTemplate = (): string => {
     return Path.join(__dirname, '..', '..', 'template', 'navigation.ejs');
 };
 
+export const getDefaultStyleSheet = (): string => {
+
+    return Path.join(__dirname, '..', '..', 'template', 'style-sheet.css');
+};
+
 export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';
 
 // tslint:disable-next-line: variable-name

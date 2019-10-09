@@ -19,6 +19,7 @@ export type Article = {
     readonly path: string;
 
     readonly template?: string;
+    readonly styleSheet?: string;
     readonly private?: boolean;
     readonly groups?: string[];
     readonly groupMode?: 'All' | 'OneOf';
@@ -39,6 +40,7 @@ export type LibraryConfig = {
     readonly favicon: string;
 
     readonly globalTemplates: GlobalTemplates;
+    readonly globalStyleSheet: string;
 
     readonly categories: Category[];
     readonly articles: Article[];

@@ -45,6 +45,7 @@ export const renderArticle = async (
 
     const articlePath: string = config.joinPath(article.path);
     const templatePath: string = article.template ? config.joinPath(article.template) : config.getPublicArticleTemplate();
+    const styleSheetPath: string = config.getStyleSheet();
     const navigationPath: string = config.getNavigationTemplate();
 
     const exist: boolean = await pathExists(articlePath);
@@ -61,6 +62,7 @@ export const renderArticle = async (
 
     const content: string = await readTextFile(articlePath);
     const template: string = await readTextFile(templatePath);
+    const styleSheet: string = await readTextFile(styleSheetPath);
 
     const html: string = renderMarkdown(content);
 
@@ -79,6 +81,7 @@ export const renderArticle = async (
         title: config.title,
         article: html,
         author: article.author,
+        styleSheet,
     });
 };
 

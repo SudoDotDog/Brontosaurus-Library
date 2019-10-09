@@ -7,7 +7,7 @@
 import * as Fs from "fs";
 import * as Path from "path";
 import { Article, Category, LibraryConfig } from "../declare";
-import { getConfigPath, getDefaultFourOFourTemplate, getDefaultNavigationTemplate, getDefaultPublicArticleTemplate, Throwable_VerifyConfig } from "../util/conf";
+import { getConfigPath, getDefaultFourOFourTemplate, getDefaultNavigationTemplate, getDefaultPublicArticleTemplate, getDefaultStyleSheet, Throwable_VerifyConfig } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ConfigAgent {
@@ -78,6 +78,15 @@ export class ConfigAgent {
         }
 
         return getDefaultFourOFourTemplate();
+    }
+
+    public getStyleSheet(): string {
+
+        if (this._config.globalStyleSheet) {
+            return this.joinPath(this._config.globalStyleSheet);
+        }
+
+        return getDefaultStyleSheet();
     }
 
     public getPublicArticleTemplate(): string {
