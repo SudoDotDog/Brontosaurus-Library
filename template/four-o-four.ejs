@@ -46,6 +46,20 @@
         color: blue;
     }
 
+    @media print {
+
+        html,
+        body,
+        .container {
+            margin: 0;
+            padding: 0;
+        }
+
+        .next {
+            display: none;
+        }
+    }
+
     @media only screen and (max-width: 1000px) {
 
         .container {
@@ -68,7 +82,7 @@
     <div class="container">
         <header class="title"><%- header.replace(/ /g, '\<br>') %></header>
         <section class="info">404! Article Not Found Or Viewing Permission Required</section>
-        <nav>
+        <nav class="next">
             <a class="login" href="<%= authPath %>">
                 <%if (loggedIn) { %>
                 ReLogin

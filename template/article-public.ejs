@@ -96,7 +96,36 @@
         -webkit-overflow-scrolling: touch;
     }
 
+    @media print {
+
+        html,
+        body,
+        .container,
+        .title-area,
+        .article-area {
+            display: block;
+            margin: 0;
+            padding: 0;
+            overflow: visible;
+            height: auto;
+        }
+
+        .container {
+            overflow: hidden;
+            grid-template-areas:
+                "title"
+                "article";
+            grid-template-columns: 1fr;
+            grid-template-rows: 1fr;
+        }
+
+        .navigation-area {
+            display: none;
+        }
+    }
+
     @media only screen and (max-width: 1000px) {
+
         .container {
             overflow: hidden;
             grid-template-areas:
