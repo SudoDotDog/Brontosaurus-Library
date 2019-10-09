@@ -32,7 +32,8 @@ export const renderFourOFour = async (authPath: string, loggedIn: boolean): Prom
         authPath,
         indexPath: getLibraryPath(),
         loggedIn,
-        title: config.title,
+        header: config.title,
+        title: `404! Article Not Found Or Viewing Permission Required | ${config.title}`,
     });
 };
 
@@ -78,7 +79,8 @@ export const renderArticle = async (
 
         favicon: config.favicon,
         tree: category.tree,
-        title: config.title,
+        header: config.title,
+        title: `${article.title} | ${config.title}`,
         article: html,
         author: article.author,
         styleSheet,
@@ -125,6 +127,7 @@ export const renderIndex = async (): Promise<string | null> => {
 
         favicon: config.favicon,
         tree: category.tree,
+        header: config.title,
         title: config.title,
         article: html,
         author: '',
