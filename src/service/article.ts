@@ -92,6 +92,7 @@ export const renderIndex = async (): Promise<string | null> => {
 
     const articlePath: string = config.joinPath(config.index);
     const templatePath: string = config.getPublicArticleTemplate();
+    const styleSheetPath: string = config.getStyleSheet();
     const navigationPath: string = config.getNavigationTemplate();
 
     const exist: boolean = await pathExists(articlePath);
@@ -108,6 +109,7 @@ export const renderIndex = async (): Promise<string | null> => {
 
     const content: string = await readTextFile(articlePath);
     const template: string = await readTextFile(templatePath);
+    const styleSheet: string = await readTextFile(styleSheetPath);
 
     const html: string = renderMarkdown(content);
 
@@ -126,5 +128,6 @@ export const renderIndex = async (): Promise<string | null> => {
         title: config.title,
         article: html,
         author: '',
+        styleSheet,
     });
 };

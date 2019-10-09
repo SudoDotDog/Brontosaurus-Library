@@ -15,7 +15,7 @@ import { ERROR_CODE, panic } from "../util/panic";
 
 export class ArticleRoute extends BrontosaurusRoute {
 
-    public readonly path: string = '/*';
+    public readonly path: any = /^[A-Za-z0-9_\-\/]+$/;
     public readonly mode: ROUTE_MODE = ROUTE_MODE.GET;
 
     public readonly groups: SudooExpressHandler[] = [
