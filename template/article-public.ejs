@@ -126,6 +126,14 @@
 
     @media only screen and (max-width: 1000px) {
 
+        html,
+        body,
+        .container,
+        .title-area,
+        .article-area {
+            height: auto;
+        }
+
         .container {
             overflow: hidden;
             grid-template-areas:
@@ -133,6 +141,11 @@
                 "article navigation";
             grid-template-columns: 100vw auto;
             grid-template-rows: 1fr auto;
+        }
+
+        .container.open {
+            touch-action: none;
+            -ms-touch-action: none;
         }
 
         .title-area {
@@ -157,7 +170,8 @@
         .navigation-area {
             grid-area: navigation;
             position: fixed;
-            background-color: white;
+            z-index: 50;
+            background-color: red;
             right: -100vw;
             top: 0;
             width: 100vw;
@@ -173,6 +187,10 @@
             right: 0;
         }
 
+        .navigation-content {
+            padding-bottom: 150px;
+        }
+
         .article-area {
             padding-left: 15px;
         }
@@ -184,13 +202,13 @@
 </style>
 
 <body>
-    <div class="container">
+    <div id="container" class="container">
         <header class="title-area">
             <div class="title"><%- header.replace(/ /g, '\<br>') %></div>
-            <div class="expend-button" onclick="document.getElementById('navigation').classList.add('open')">⇋</div>
+            <div class="expend-button" id="expend-button">⇋</div>
         </header>
         <nav id="navigation" class="navigation-area">
-            <div class="cancel-button" onclick="document.getElementById('navigation').classList.remove('open')">⇋</div>
+            <div class="cancel-button" id="cancel-button">⇋</div>
             <div class="navigation-content">
                 <%- include(navigationPath, {
                     trees: tree.children,
@@ -201,5 +219,28 @@
         <article class="article-area style-sheet"><%- article %></article>
     </div>
 </body>
+
+<script>
+    let isOpen = false;
+    const openNav = () => {
+        document.getElementById('navigation').classList.add('open');
+        document.getElementById('container').classList.add('open');
+        isOpen = true;
+    };
+    const closeNav = () => {
+        document.getElementById('navigation').classList.remove('open');
+        document.getElementById('container').classList.remove('open');
+        isOpen = false;
+    };
+    const bodyMouseMove = (e) => {
+        if (isOpen) {
+            e.stopPropagation();
+        }
+    };
+
+    document.getElementById('expend-button').addEventListener('click', openNav);
+    document.getElementById('cancel-button').addEventListener('click', closeNav);
+    document.getElementById('container').addEventListener('touchmove', bodyMouseMove);
+</script>
 
 </html>
