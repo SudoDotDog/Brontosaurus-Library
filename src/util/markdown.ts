@@ -9,13 +9,14 @@ import { Converter } from "showdown";
 export const renderMarkdown = (text: string): string => {
 
     const converter: Converter = new Converter({
-        omitExtraWLInCodeBlocks: true,
-        noHeaderId: false,
-        ghCompatibleHeaderId: true,
+        disableForced4SpacesIndentedSublists: true,
         excludeTrailingPunctuationFromURLs: true,
+        ghCodeBlocks: true,
+        ghCompatibleHeaderId: true,
+        noHeaderId: false,
+        omitExtraWLInCodeBlocks: true,
         strikethrough: true,
         tables: true,
-        ghCodeBlocks: true,
         tasklists: true,
     });
     const html: string = converter.makeHtml(text);
