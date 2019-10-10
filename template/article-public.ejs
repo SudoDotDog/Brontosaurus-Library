@@ -171,7 +171,7 @@
             grid-area: navigation;
             position: fixed;
             z-index: 50;
-            background-color: red;
+            background-color: white;
             right: -100vw;
             top: 0;
             width: 100vw;
@@ -209,7 +209,7 @@
         </header>
         <nav id="navigation" class="navigation-area">
             <div class="cancel-button" id="cancel-button">⇋</div>
-            <div class="navigation-content">
+            <div class="navigation-content" id="navigation-content">
                 <%- include(navigationPath, {
                     trees: tree.children,
                     parseLink: parseLink,
@@ -234,7 +234,20 @@
     };
     const bodyMouseMove = (e) => {
         if (isOpen) {
-            e.stopPropagation();
+            const content = document.getElementById('navigation');
+            if (content.scrollTop + content.clientHeight === content.scrollHeight) {
+                console.log(e.detail)
+                e.preventDefault();
+                return;
+            }
+
+            const classes = [...e.target.classList];
+            if (classes.includes('link')
+                || classes.includes('article')
+                || classes.includes('category')) {
+                return;
+            }
+            e.preventDefault();
         }
     };
 
