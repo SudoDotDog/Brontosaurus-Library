@@ -22,6 +22,11 @@ Example Long Sentence Example Long Sentence Example Long Sentence Example Long S
 | 12345 | 1000 S 10th St, 50326 |
 | 12345 | 1000 S 10th St, 50326 |
 
+## Example Inline Code
+
+`Example Inline Code` Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence `Example Inline Code` Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence `Example Inline Code` Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence Example Long Sentence `Example Inline Code` Example Long Sentence `Example Inline Code`
+
+
 ## Example Code Area
 
 ```js

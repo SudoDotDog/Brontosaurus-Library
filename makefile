@@ -77,8 +77,8 @@ stop: kill
 
 tag:
 	@echo "[INFO] Mark docker tag"
-	@docker tag $(image_name) $(image_repo):1.8.2
+	@docker tag $(image_name) $(image_repo):1.8.3
 
 publish: stop tag
 	@echo "[INFO] Publish docker image"
-	@docker push $(image_repo):1.8.2
+	@docker push $(image_repo):1.8.3

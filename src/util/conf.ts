@@ -10,11 +10,6 @@ import { ERROR_CODE, panic } from "./panic";
 
 export const pageLimit: number = 20;
 
-export const getEnvGettingText = () => {
-
-    return `<script>if(!window.env){window.env={}};window.env.PORTAL_PATH="${process.env.PORTAL_PATH}"</script>`;
-};
-
 export const getApplicationKey = (): string => {
 
     if (process.env.BRONTOSAURUS_APPLICATION_KEY) {
