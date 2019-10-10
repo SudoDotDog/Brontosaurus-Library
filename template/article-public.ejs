@@ -202,14 +202,14 @@
 </style>
 
 <body>
-    <div id="container" class="container">
+    <div id="library__container" class="container">
         <header class="title-area">
             <div class="title"><%- header.replace(/ /g, '\<br>') %></div>
-            <div class="expend-button" id="expend-button">⇋</div>
+            <div class="expend-button" id="library__expend-button">⇋</div>
         </header>
-        <nav id="navigation" class="navigation-area">
-            <div class="cancel-button" id="cancel-button">⇋</div>
-            <div class="navigation-content" id="navigation-content">
+        <nav id="library__navigation" class="navigation-area">
+            <div class="cancel-button" id="library__cancel-button">⇋</div>
+            <div class="navigation-content" id="library__navigation-content">
                 <%- include(navigationPath, {
                     trees: tree.children,
                     parseLink: parseLink,
@@ -223,18 +223,18 @@
 <script>
     let isOpen = false;
     const openNav = () => {
-        document.getElementById('navigation').classList.add('open');
-        document.getElementById('container').classList.add('open');
+        document.getElementById('library__navigation').classList.add('open');
+        document.getElementById('library__container').classList.add('open');
         isOpen = true;
     };
     const closeNav = () => {
-        document.getElementById('navigation').classList.remove('open');
-        document.getElementById('container').classList.remove('open');
+        document.getElementById('library__navigation').classList.remove('open');
+        document.getElementById('library__container').classList.remove('open');
         isOpen = false;
     };
     const bodyMouseMove = (e) => {
         if (isOpen) {
-            const content = document.getElementById('navigation');
+            const content = document.getElementById('library__navigation');
             if (content.scrollTop + content.clientHeight === content.scrollHeight) {
                 e.preventDefault();
                 return;
@@ -250,9 +250,9 @@
         }
     };
 
-    document.getElementById('expend-button').addEventListener('click', openNav);
-    document.getElementById('cancel-button').addEventListener('click', closeNav);
-    document.getElementById('container').addEventListener('touchmove', bodyMouseMove);
+    document.getElementById('library__expend-button').addEventListener('click', openNav);
+    document.getElementById('library__cancel-button').addEventListener('click', closeNav);
+    document.getElementById('library__container').addEventListener('touchmove', bodyMouseMove);
 </script>
 
 </html>
