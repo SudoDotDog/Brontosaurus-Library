@@ -236,7 +236,6 @@
         if (isOpen) {
             const content = document.getElementById('navigation');
             if (content.scrollTop + content.clientHeight === content.scrollHeight) {
-                console.log(e.detail)
                 e.preventDefault();
                 return;
             }
