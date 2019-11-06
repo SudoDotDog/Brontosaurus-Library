@@ -60,6 +60,27 @@ export class CategoryTree {
         return this._children;
     }
 
+    public getVisibleChildren(): CategoryTree[] {
+
+        return this._children.filter((child: CategoryTree) => child.isVisible());
+    }
+
+    public isVisible(): boolean {
+
+        for (const article of this._articles) {
+            if (!article.private) {
+                return true;
+            }
+        }
+
+        for (const child of this._children) {
+            if (child.isVisible()) {
+                return true;
+            }
+        }
+        return false;
+    }
+
     public category(category: Category): CategoryTree {
 
         for (const child of this._children) {

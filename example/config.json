@@ -11,6 +11,10 @@
         {
             "name": "nested",
             "title": "Nested"
+        },
+        {
+            "name": "hidden",
+            "title": "Hidden"
         }
     ],
     "articles": [
@@ -66,6 +70,16 @@
             "name": "hello",
             "title": "Hello",
             "path": "hello.md"
+        },
+        {
+            "categories": [
+                "hidden"
+            ],
+            "author": "joshua",
+            "name": "private-hello",
+            "title": "Private Hello",
+            "path": "hello.md",
+            "private": true
         }
     ]
 }
