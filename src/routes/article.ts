@@ -68,7 +68,7 @@ export class ArticleRoute extends BrontosaurusRoute {
             const article: Article | null = this._article.getArticle(stack);
 
             if (!article) {
-                const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), false);
+                const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), Boolean(authorization));
                 res.agent.raw(fourOFour);
                 return;
             }
@@ -76,7 +76,7 @@ export class ArticleRoute extends BrontosaurusRoute {
             if (article.groups) {
 
                 if (!authorization) {
-                    const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), false);
+                    const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), Boolean(authorization));
                     res.agent.raw(fourOFour);
                     return;
                 }
@@ -84,7 +84,7 @@ export class ArticleRoute extends BrontosaurusRoute {
                 const result: boolean = verifyToken(authorization, article.groups, article.groupMode || 'All');
 
                 if (!result) {
-                    const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), true);
+                    const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), Boolean(authorization));
                     res.agent.raw(fourOFour);
                     return;
                 }
@@ -111,6 +111,8 @@ export class ArticleRoute extends BrontosaurusRoute {
     }
 
     private async _renderFourOFour(authPath: string, loggedIn: boolean): Promise<string> {
+
+        console.log(loggedIn);
 
         const fourOFour: string | null = await renderFourOFour(authPath, loggedIn);
 
