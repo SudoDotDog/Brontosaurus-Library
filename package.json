@@ -21,6 +21,7 @@
     "@sudoo/extract": "^1.2.1",
     "@sudoo/io": "^1.6.1",
     "@sudoo/log": "^1.2.2",
+    "@sudoo/magic": "^1.2.0",
     "connor": "^2.6.1",
     "ejs": "^3.0.1",
     "showdown": "^1.9.1"

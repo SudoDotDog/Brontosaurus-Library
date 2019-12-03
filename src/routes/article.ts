@@ -5,6 +5,7 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
+import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { ArticleAgent } from "../agent/article";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
@@ -97,7 +98,7 @@ export class ArticleRoute extends BrontosaurusRoute {
         } catch (error) {
 
             this._log.error(`${req.path} - ${error.message} (${error.code})`);
-            res.agent.fail(404, panic.code(ERROR_CODE.NOT_FOUND));
+            res.agent.fail(HTTP_RESPONSE_CODE.NOT_FOUND, panic.code(ERROR_CODE.NOT_FOUND));
         } finally {
             next();
         }
