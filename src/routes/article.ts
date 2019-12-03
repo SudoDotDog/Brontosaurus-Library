@@ -4,6 +4,7 @@
  * @description Article
  */
 
+import { AuthToken } from "@brontosaurus/node";
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
 import { HTTP_RESPONSE_CODE } from "@sudoo/magic";
 import { ArticleAgent } from "../agent/article";
@@ -11,7 +12,7 @@ import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
 import { createRenderArticleBuilder, createRenderIndexBuilder, renderFourOFour } from "../service/article";
-import { buildAuthPath, buildBufferPath, verifyToken } from "../service/auth";
+import { auth, buildAuthPath, buildBufferPath, verifyToken } from "../service/auth";
 import { PageRenderBuilder } from "../service/render";
 import { ERROR_CODE, panic } from "../util/panic";
 
@@ -29,6 +30,24 @@ export class ArticleRoute extends BrontosaurusRoute {
     private async _articleHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
         try {
+
+            const logout: string | undefined = req.query.logout;
+
+            if (logout) {
+                res.cookie('token', '');
+                res.agent.redirect(buildBufferPath(req.path));
+                return;
+            }
+
+            const token: string | undefined = req.query.token;
+
+            if (token) {
+                res.cookie('token', token);
+                res.agent.redirect(buildBufferPath(req.path));
+                return;
+            }
+
+            const authorization: AuthToken | null = this._getToken(req.cookies.token);
 
             if (req.path === '/') {
                 const indexPage: PageRenderBuilder | null = await createRenderIndexBuilder();
@@ -51,33 +70,15 @@ export class ArticleRoute extends BrontosaurusRoute {
                 return;
             }
 
-            const logout: string | undefined = req.query.logout;
-
-            if (logout) {
-                res.cookie('token', '');
-                res.agent.redirect(buildBufferPath(req.path));
-                return;
-            }
-
-            const token: string | undefined = req.query.token;
-
-            if (token) {
-                res.cookie('token', token);
-                res.agent.redirect(buildBufferPath(req.path));
-                return;
-            }
-
             if (article.groups) {
 
-                const cookie: string | undefined = req.cookies.token;
-
-                if (!cookie) {
+                if (!authorization) {
                     const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), false);
                     res.agent.raw(fourOFour);
                     return;
                 }
 
-                const result: boolean = verifyToken(cookie as any, article.groups, article.groupMode || 'All');
+                const result: boolean = verifyToken(authorization, article.groups, article.groupMode || 'All');
 
                 if (!result) {
                     const fourOFour: string = await this._renderFourOFour(buildAuthPath(req.path), true);
@@ -113,5 +114,20 @@ export class ArticleRoute extends BrontosaurusRoute {
         }
 
         return fourOFour;
+    }
+
+    private _getToken(principle: string | undefined): AuthToken | null {
+
+        if (!principle) {
+            return null;
+        }
+
+        const token: AuthToken | null = auth.token(principle);
+
+        if (!token) {
+            throw panic.code(ERROR_CODE.INVALID_TOKEN);
+        }
+
+        return token;
     }
 }

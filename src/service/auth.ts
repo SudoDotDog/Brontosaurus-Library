@@ -13,9 +13,7 @@ export const auth: Authorization = Authorization.create(
     getPublicKey(),
 );
 
-export const verifyToken = (principal: string, groups: string[], mode: 'All' | 'OneOf'): boolean => {
-
-    const token: AuthToken | null = auth.token(principal);
+export const verifyToken = (token: AuthToken | null, groups: string[], mode: 'All' | 'OneOf'): boolean => {
 
     if (token && token.authenticate()) {
 
