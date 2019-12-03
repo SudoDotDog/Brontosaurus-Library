@@ -4,7 +4,6 @@
  * @description Article
  */
 
-import { AuthToken } from "@brontosaurus/node";
 import { pathExists, readTextFile } from "@sudoo/io";
 import { render } from "ejs";
 import { CategoryAgent } from "../agent/category";
@@ -12,6 +11,7 @@ import { ConfigAgent } from "../agent/config";
 import { Article } from "../declare";
 import { getLibraryPath } from "../util/conf";
 import { renderMarkdown } from "../util/markdown";
+import { PageRenderBuilder } from "./render";
 
 export const renderFourOFour = async (authPath: string, loggedIn: boolean): Promise<string | null> => {
 
@@ -38,10 +38,9 @@ export const renderFourOFour = async (authPath: string, loggedIn: boolean): Prom
     });
 };
 
-export const renderArticle = async (
+export const createRenderArticleBuilder = async (
     article: Article,
-    token: AuthToken,
-): Promise<string | null> => {
+): Promise<PageRenderBuilder | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
     const category: CategoryAgent = CategoryAgent.instance;
@@ -69,7 +68,7 @@ export const renderArticle = async (
 
     const html: string = renderMarkdown(content);
 
-    return render(template, {
+    return PageRenderBuilder.create(template, {
 
         navigationPath,
 
@@ -82,14 +81,14 @@ export const renderArticle = async (
         favicon: config.favicon,
         tree: category.tree,
         header: config.title,
-        title: `${article.title} | ${config.title}`,
+        title: config.title,
         article: html,
-        author: article.author,
+        author: '',
         styleSheet,
     });
 };
 
-export const renderIndex = async (token: AuthToken): Promise<string | null> => {
+export const createRenderIndexBuilder = async (): Promise<PageRenderBuilder | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
     const category: CategoryAgent = CategoryAgent.instance;
@@ -117,7 +116,7 @@ export const renderIndex = async (token: AuthToken): Promise<string | null> => {
 
     const html: string = renderMarkdown(content);
 
-    return render(template, {
+    return PageRenderBuilder.create(template, {
 
         navigationPath,
 

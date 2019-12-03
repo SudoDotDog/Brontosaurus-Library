@@ -5,10 +5,10 @@
  */
 
 import { ROUTE_MODE, SudooExpressHandler, SudooExpressNextFunction, SudooExpressRequest, SudooExpressResponse } from "@sudoo/express";
-import { ConfigAgent } from "../agent/config";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
-import { renderIndex } from "../service/article";
+import { createRenderIndexBuilder } from "../service/article";
+import { PageRenderBuilder } from "../service/render";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class IndexRoute extends BrontosaurusRoute {
@@ -24,8 +24,14 @@ export class IndexRoute extends BrontosaurusRoute {
 
         try {
 
-            const html: string | null = await renderIndex();
-            res.agent.raw(html);
+            const page: PageRenderBuilder | null = await createRenderIndexBuilder();
+
+            if (!page) {
+                throw panic.code(ERROR_CODE.FILE_NOT_FOUND);
+            }
+
+            const raw: string = page.render();
+            res.agent.raw(raw);
         } catch (error) {
 
             this._log.error(`${req.path} - ${error.message} (${error.code})`);

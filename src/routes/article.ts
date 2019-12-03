@@ -9,8 +9,9 @@ import { ArticleAgent } from "../agent/article";
 import { BrontosaurusRoute } from "../basic/basic";
 import { autoHook } from "../basic/hook";
 import { Article } from "../declare";
-import { renderArticle, renderFourOFour, renderIndex } from "../service/article";
+import { createRenderArticleBuilder, createRenderIndexBuilder, renderFourOFour } from "../service/article";
 import { buildAuthPath, buildBufferPath, verifyToken } from "../service/auth";
+import { PageRenderBuilder } from "../service/render";
 import { ERROR_CODE, panic } from "../util/panic";
 
 export class ArticleRoute extends BrontosaurusRoute {
@@ -29,8 +30,14 @@ export class ArticleRoute extends BrontosaurusRoute {
         try {
 
             if (req.path === '/') {
-                const indexPage: string | null = await renderIndex();
-                res.agent.raw(indexPage);
+                const indexPage: PageRenderBuilder | null = await createRenderIndexBuilder();
+
+                if (!indexPage) {
+                    throw panic.code(ERROR_CODE.FILE_NOT_FOUND);
+                }
+
+                const indexRaw: string = indexPage.render();
+                res.agent.raw(indexRaw);
                 return;
             }
 
@@ -78,13 +85,15 @@ export class ArticleRoute extends BrontosaurusRoute {
                 }
             }
 
-            const html: string | null = await renderArticle(article, token);
+            const page: PageRenderBuilder | null = await createRenderArticleBuilder(article);
 
-            if (!html) {
+            if (!page) {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'));
             }
 
-            res.agent.raw(html);
+            const raw: string = page.render();
+
+            res.agent.raw(raw);
         } catch (error) {
 
             this._log.error(`${req.path} - ${error.message} (${error.code})`);
