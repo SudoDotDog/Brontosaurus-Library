@@ -32,12 +32,12 @@
 <div class="category">
     <%= child.title %>
     <div class="sub-category">
-        <% child.getVisibleArticles().forEach(function (article) { %>
+        <% child.getVisibleArticles(token).forEach(function (article) { %>
         <div class="article">
             <a class="link" href="<%= parseLink(article) %>"><%= article.title %></a>
         </div>
         <% }); %>
-        <%- renderTrees(child.children); %>
+        <%- renderTrees(child.getVisibleChildren(token)); %>
     </div>
 </div>
 <% }); %>

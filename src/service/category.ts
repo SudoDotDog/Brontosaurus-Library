@@ -4,7 +4,9 @@
  * @description Category
  */
 
+import { AuthToken } from "@brontosaurus/node";
 import { Article, Category } from "../declare";
+import { isArticleVisible } from "../util/article";
 
 export class CategoryTree {
 
@@ -60,27 +62,29 @@ export class CategoryTree {
         return this._children;
     }
 
-    public getVisibleArticles(groups: string[]): Article[] {
+    public getVisibleArticles(token: AuthToken | null): Article[] {
 
-        console.log(groups);
-        return this._articles.filter((article: Article) => !article.private);
+        return this._articles.filter((article: Article) => isArticleVisible(article, token));
     }
 
-    public getVisibleChildren(): CategoryTree[] {
+    public getVisibleChildren(token: AuthToken | null): CategoryTree[] {
 
-        return this._children.filter((child: CategoryTree) => child.isVisible());
+
+        return this._children.filter((child: CategoryTree) => {
+            return child.isVisible(token);
+        });
     }
 
-    public isVisible(): boolean {
+    public isVisible(token: AuthToken | null): boolean {
 
         for (const article of this._articles) {
-            if (!article.private) {
+            if (isArticleVisible(article, token)) {
                 return true;
             }
         }
 
         for (const child of this._children) {
-            if (child.isVisible()) {
+            if (child.isVisible(token)) {
                 return true;
             }
         }

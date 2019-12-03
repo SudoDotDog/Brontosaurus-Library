@@ -11,7 +11,7 @@ import { CategoryTree } from "./category";
 
 export type PageRenderDataStructure = {
 
-    token?: AuthToken;
+    token?: AuthToken | null;
 
     readonly navigationPath: string;
 
@@ -30,7 +30,10 @@ export class PageRenderBuilder {
 
     public static create(templatePath: string, init: PageRenderDataStructure) {
 
-        return new PageRenderBuilder(templatePath, init);
+        return new PageRenderBuilder(templatePath, {
+            ...init,
+            token: init.token || null,
+        });
     }
 
     private readonly _templatePath: string;
@@ -45,5 +48,19 @@ export class PageRenderBuilder {
     public render() {
 
         return render(this._templatePath, this._structure);
+    }
+
+    public attemptHydrateToken(token: AuthToken | undefined | null): this {
+
+        if (token) {
+            return this.hydrateToken(token);
+        }
+        return this;
+    }
+
+    public hydrateToken(token: AuthToken): this {
+
+        this._structure.token = token;
+        return this;
     }
 }

@@ -50,11 +50,14 @@ export class ArticleRoute extends BrontosaurusRoute {
             const authorization: AuthToken | null = this._getToken(req.cookies.token);
 
             if (req.path === '/') {
+
                 const indexPage: PageRenderBuilder | null = await createRenderIndexBuilder();
 
                 if (!indexPage) {
                     throw panic.code(ERROR_CODE.FILE_NOT_FOUND);
                 }
+
+                indexPage.attemptHydrateToken(authorization);
 
                 const indexRaw: string = indexPage.render();
                 res.agent.raw(indexRaw);
@@ -92,6 +95,8 @@ export class ArticleRoute extends BrontosaurusRoute {
             if (!page) {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'));
             }
+
+            page.attemptHydrateToken(authorization);
 
             const raw: string = page.render();
 
