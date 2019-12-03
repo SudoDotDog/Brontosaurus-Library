@@ -45,7 +45,6 @@
             "name": "permission-hello",
             "title": "Permission Hello",
             "path": "hello.md",
-            "private": true,
             "groups": [
                 "BRONTOSAURUS_SELF_CONTROL"
             ]
@@ -58,7 +57,6 @@
             "name": "permission-hello-more",
             "title": "Permission Hello More",
             "path": "hello.md",
-            "private": true,
             "groups": [
                 "BRONTOSAURUS_SELF_CONTROL_MORE"
             ]
