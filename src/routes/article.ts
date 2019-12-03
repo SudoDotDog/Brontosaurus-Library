@@ -78,7 +78,7 @@ export class ArticleRoute extends BrontosaurusRoute {
                 }
             }
 
-            const html: string | null = await renderArticle(article);
+            const html: string | null = await renderArticle(article, token);
 
             if (!html) {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'));

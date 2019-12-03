@@ -4,6 +4,7 @@
  * @description Article
  */
 
+import { AuthToken } from "@brontosaurus/node";
 import { pathExists, readTextFile } from "@sudoo/io";
 import { render } from "ejs";
 import { CategoryAgent } from "../agent/category";
@@ -39,6 +40,7 @@ export const renderFourOFour = async (authPath: string, loggedIn: boolean): Prom
 
 export const renderArticle = async (
     article: Article,
+    token: AuthToken,
 ): Promise<string | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
@@ -87,7 +89,7 @@ export const renderArticle = async (
     });
 };
 
-export const renderIndex = async (): Promise<string | null> => {
+export const renderIndex = async (token: AuthToken): Promise<string | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
     const category: CategoryAgent = CategoryAgent.instance;

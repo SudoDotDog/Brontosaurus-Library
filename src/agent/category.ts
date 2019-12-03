@@ -55,9 +55,7 @@ export class CategoryAgent {
                 current = current.category(parsed);
             }
 
-            if (!article.private) {
-                current.addArticle(article);
-            }
+            current.addArticle(article);
         }
 
         return this;

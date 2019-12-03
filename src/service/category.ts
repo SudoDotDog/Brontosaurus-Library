@@ -60,6 +60,12 @@ export class CategoryTree {
         return this._children;
     }
 
+    public getVisibleArticles(groups: string[]): Article[] {
+
+        console.log(groups);
+        return this._articles.filter((article: Article) => !article.private);
+    }
+
     public getVisibleChildren(): CategoryTree[] {
 
         return this._children.filter((child: CategoryTree) => child.isVisible());
