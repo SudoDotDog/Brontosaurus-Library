@@ -69,7 +69,6 @@ export class CategoryTree {
 
     public getVisibleChildren(token: AuthToken | null): CategoryTree[] {
 
-
         return this._children.filter((child: CategoryTree) => {
             return child.isVisible(token);
         });

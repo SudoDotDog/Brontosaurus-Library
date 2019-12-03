@@ -220,7 +220,7 @@
             <div class="cancel-button" id="library__cancel-button">⇋</div>
             <div class="navigation-content" id="library__navigation-content">
                 <%- include(navigationPath, {
-                    trees: tree.getVisibleChildren(),
+                    trees: tree.getVisibleChildren(token),
                     parseLink: parseLink,
                 }); %>
             </div>

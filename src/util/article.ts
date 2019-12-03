@@ -16,13 +16,16 @@ export const isArticleVisible = (article: Article, token: AuthToken | null): boo
     if (!article.private) {
         return true;
     }
-    if (!article.groups) {
+
+    if (!Array.isArray(article.groups)) {
         return false;
     }
+
     for (const group of article.groups) {
         if (!token.groups.includes(group)) {
             return false;
         }
     }
+
     return true;
 };

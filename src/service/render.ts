@@ -7,7 +7,7 @@
 import { AuthToken } from "@brontosaurus/node";
 import { render } from "ejs";
 import { Article } from "../declare";
-import { CategoryTree } from "./category";
+import { CategoryTree } from "./tree";
 
 export type PageRenderDataStructure = {
 

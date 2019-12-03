@@ -5,7 +5,7 @@
  */
 
 import { Article, Category } from "../declare";
-import { CategoryTree } from "../service/category";
+import { CategoryTree } from "../service/tree";
 import { ConfigAgent } from "./config";
 
 export class CategoryAgent {
