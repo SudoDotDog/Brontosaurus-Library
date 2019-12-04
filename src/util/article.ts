@@ -13,6 +13,10 @@ export const isArticleVisible = (article: Article, token: AuthToken | null): boo
         return !article.private;
     }
 
+    if (article.hidden) {
+        return false;
+    }
+
     if (!article.private) {
         return true;
     }
