@@ -31,10 +31,11 @@
         display: grid;
         grid-template-areas:
             "title article"
+            "status article"
             "navigation article";
         column-gap: 20px;
         grid-template-columns: auto 1fr;
-        grid-template-rows: auto 1fr;
+        grid-template-rows: auto auto 1fr;
     }
 
     .title-area {
@@ -49,6 +50,13 @@
         color: white;
 
         display: flex;
+    }
+
+    .status-area {
+        grid-area: status;
+
+        background-color: #004fa1;
+        color: white;
     }
 
     .title {
@@ -216,6 +224,13 @@
             <div class="title"><%- header.replace(/ /g, '\<br>') %></div>
             <div class="expend-button" id="library__expend-button">⇋</div>
         </header>
+        <section class="status-area">
+            <%if (login.status) { %>
+            <%- login.username %>
+            <% } else { %>
+            Login
+            <% } %>
+        </section>
         <nav id="library__navigation" class="navigation-area">
             <div class="cancel-button" id="library__cancel-button">⇋</div>
             <div class="navigation-content" id="library__navigation-content">

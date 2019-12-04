@@ -4,6 +4,7 @@
  * @description Article
  */
 
+import { AuthToken } from "@brontosaurus/node";
 import { pathExists, readTextFile } from "@sudoo/io";
 import { render } from "ejs";
 import { CategoryAgent } from "../agent/category";
@@ -40,6 +41,7 @@ export const renderFourOFour = async (authPath: string, loggedIn: boolean): Prom
 
 export const createRenderArticleBuilder = async (
     article: Article,
+    token?: AuthToken | null,
 ): Promise<PageRenderBuilder | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
@@ -85,10 +87,14 @@ export const createRenderArticleBuilder = async (
         article: html,
         author: '',
         styleSheet,
+        login: {
+            status: Boolean(token),
+            username: token ? token.username : undefined,
+        },
     });
 };
 
-export const createRenderIndexBuilder = async (): Promise<PageRenderBuilder | null> => {
+export const createRenderIndexBuilder = async (token?: AuthToken | null): Promise<PageRenderBuilder | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
     const category: CategoryAgent = CategoryAgent.instance;
@@ -133,5 +139,9 @@ export const createRenderIndexBuilder = async (): Promise<PageRenderBuilder | nu
         article: html,
         author: '',
         styleSheet,
+        login: {
+            status: Boolean(token),
+            username: token ? token.username : undefined,
+        },
     });
 };

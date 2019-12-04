@@ -51,7 +51,7 @@ export class ArticleRoute extends BrontosaurusRoute {
 
             if (req.path === '/') {
 
-                const indexPage: PageRenderBuilder | null = await createRenderIndexBuilder();
+                const indexPage: PageRenderBuilder | null = await createRenderIndexBuilder(authorization);
 
                 if (!indexPage) {
                     throw panic.code(ERROR_CODE.FILE_NOT_FOUND);
@@ -90,7 +90,7 @@ export class ArticleRoute extends BrontosaurusRoute {
                 }
             }
 
-            const page: PageRenderBuilder | null = await createRenderArticleBuilder(article);
+            const page: PageRenderBuilder | null = await createRenderArticleBuilder(article, authorization);
 
             if (!page) {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'));
@@ -111,8 +111,6 @@ export class ArticleRoute extends BrontosaurusRoute {
     }
 
     private async _renderFourOFour(authPath: string, loggedIn: boolean): Promise<string> {
-
-        console.log(loggedIn);
 
         const fourOFour: string | null = await renderFourOFour(authPath, loggedIn);
 

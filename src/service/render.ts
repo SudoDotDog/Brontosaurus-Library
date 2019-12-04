@@ -24,6 +24,10 @@ export type PageRenderDataStructure = {
     readonly article: string;
     readonly author: string;
     readonly styleSheet: string;
+    readonly login: {
+        readonly status: boolean;
+        readonly username?: string;
+    }
 };
 
 export class PageRenderBuilder {
