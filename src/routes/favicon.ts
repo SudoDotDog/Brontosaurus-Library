@@ -17,7 +17,7 @@ export class FaviconRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.GET;
 
     public readonly groups: SudooExpressHandler[] = [
-        autoHook.wrap(this._faviconRoute.bind(this), 'Favicon', true),
+        autoHook.wrap(this._faviconRoute.bind(this), 'Favicon'),
     ];
 
     private readonly _config: ConfigAgent = ConfigAgent.instance;

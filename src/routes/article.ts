@@ -22,7 +22,7 @@ export class ArticleRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.GET;
 
     public readonly groups: SudooExpressHandler[] = [
-        autoHook.wrap(this._articleHandler.bind(this), 'Article', true),
+        autoHook.wrap(this._articleHandler.bind(this), 'Article'),
     ];
 
     private readonly _article: ArticleAgent = ArticleAgent.instance;

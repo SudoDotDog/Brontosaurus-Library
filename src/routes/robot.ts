@@ -16,7 +16,7 @@ export class RobotRoute extends BrontosaurusRoute {
     public readonly mode: ROUTE_MODE = ROUTE_MODE.GET;
 
     public readonly groups: SudooExpressHandler[] = [
-        autoHook.wrap(this._robotHandler.bind(this), 'Robot', true),
+        autoHook.wrap(this._robotHandler.bind(this), 'Robot'),
     ];
 
     private async _robotHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
