@@ -225,7 +225,7 @@
             <div class="expend-button" id="library__expend-button">⇋</div>
         </header>
         <section class="status-area">
-            <a class="login" href="<%= authPath %>">
+            <a class="login" href="<%= login.status ? logoutPath : authPath %>">
                 <%if (login.status) { %>
                 <%- login.username %>
                 <% } else { %>

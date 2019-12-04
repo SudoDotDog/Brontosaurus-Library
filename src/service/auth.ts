@@ -50,7 +50,6 @@ export const buildLogoutPath = (originalUrl: string): string => {
     const path = [
         getLibraryPath(),
         originalUrl,
-        '/',
         '?logout=true',
     ].join('');
 
