@@ -21,6 +21,7 @@ export type Article = {
     readonly template?: string;
     readonly styleSheet?: string;
     readonly private?: boolean;
+    readonly hidden?: boolean;
     readonly groups?: string[];
     readonly groupMode?: 'All' | 'OneOf';
 };

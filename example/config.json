@@ -85,6 +85,17 @@
             "path": "hello.md",
             "private": true,
             "groups": []
+        },
+        {
+            "categories": [
+                "hidden"
+            ],
+            "author": "joshua",
+            "name": "hidden-hello",
+            "title": "Hidden Hello",
+            "path": "hello.md",
+            "hidden": true,
+            "groups": []
         }
     ]
 }
