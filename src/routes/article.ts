@@ -51,7 +51,7 @@ export class ArticleRoute extends BrontosaurusRoute {
 
             if (req.path === '/') {
 
-                const indexPage: PageRenderBuilder | null = await createRenderIndexBuilder(authorization);
+                const indexPage: PageRenderBuilder | null = await createRenderIndexBuilder(req.path, authorization);
 
                 if (!indexPage) {
                     throw panic.code(ERROR_CODE.FILE_NOT_FOUND);
@@ -90,7 +90,7 @@ export class ArticleRoute extends BrontosaurusRoute {
                 }
             }
 
-            const page: PageRenderBuilder | null = await createRenderArticleBuilder(article, authorization);
+            const page: PageRenderBuilder | null = await createRenderArticleBuilder(article, req.path, authorization);
 
             if (!page) {
                 throw panic.code(ERROR_CODE.FILE_NOT_FOUND, stack.join('/'));

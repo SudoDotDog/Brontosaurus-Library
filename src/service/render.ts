@@ -17,6 +17,8 @@ export type PageRenderDataStructure = {
 
     readonly parseLink: (target: Article) => string;
 
+    readonly authPath: string;
+    readonly logoutPath: string;
     readonly favicon: string;
     readonly tree: CategoryTree;
     readonly header: string;

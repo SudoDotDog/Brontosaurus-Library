@@ -225,11 +225,13 @@
             <div class="expend-button" id="library__expend-button">⇋</div>
         </header>
         <section class="status-area">
-            <%if (login.status) { %>
-            <%- login.username %>
-            <% } else { %>
-            Login
-            <% } %>
+            <a class="login" href="<%= authPath %>">
+                <%if (login.status) { %>
+                <%- login.username %>
+                <% } else { %>
+                Login
+                <% } %>
+            </a>
         </section>
         <nav id="library__navigation" class="navigation-area">
             <div class="cancel-button" id="library__cancel-button">⇋</div>

@@ -12,6 +12,7 @@ import { ConfigAgent } from "../agent/config";
 import { Article } from "../declare";
 import { getLibraryPath } from "../util/conf";
 import { renderMarkdown } from "../util/markdown";
+import { buildAuthPath, buildLogoutPath } from "./auth";
 import { PageRenderBuilder } from "./render";
 
 export const renderFourOFour = async (authPath: string, loggedIn: boolean): Promise<string | null> => {
@@ -41,6 +42,7 @@ export const renderFourOFour = async (authPath: string, loggedIn: boolean): Prom
 
 export const createRenderArticleBuilder = async (
     article: Article,
+    originalPath: string,
     token?: AuthToken | null,
 ): Promise<PageRenderBuilder | null> => {
 
@@ -87,6 +89,8 @@ export const createRenderArticleBuilder = async (
         article: html,
         author: '',
         styleSheet,
+        authPath: buildAuthPath(originalPath),
+        logoutPath: buildLogoutPath(originalPath),
         login: {
             status: Boolean(token),
             username: token ? token.username : undefined,
@@ -94,7 +98,7 @@ export const createRenderArticleBuilder = async (
     });
 };
 
-export const createRenderIndexBuilder = async (token?: AuthToken | null): Promise<PageRenderBuilder | null> => {
+export const createRenderIndexBuilder = async (originalPath: string, token?: AuthToken | null): Promise<PageRenderBuilder | null> => {
 
     const config: ConfigAgent = ConfigAgent.instance;
     const category: CategoryAgent = CategoryAgent.instance;
@@ -139,6 +143,8 @@ export const createRenderIndexBuilder = async (token?: AuthToken | null): Promis
         article: html,
         author: '',
         styleSheet,
+        authPath: buildAuthPath(originalPath),
+        logoutPath: buildLogoutPath(originalPath),
         login: {
             status: Boolean(token),
             username: token ? token.username : undefined,
