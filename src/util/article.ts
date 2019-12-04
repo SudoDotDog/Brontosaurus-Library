@@ -9,12 +9,12 @@ import { Article } from "../declare";
 
 export const isArticleVisible = (article: Article, token: AuthToken | null): boolean => {
 
-    if (!token) {
-        return !article.private;
-    }
-
     if (article.hidden) {
         return false;
+    }
+
+    if (!token) {
+        return !article.private;
     }
 
     if (!article.private) {
