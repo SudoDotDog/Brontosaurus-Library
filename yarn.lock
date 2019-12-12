@@ -30,15 +30,15 @@
   resolved "https://registry.yarnpkg.com/@brontosaurus/definition/-/definition-3.0.0.tgz#363293f1a7b7e1310f33325aeb6a32236cbbbdd7"
   integrity sha512-7S8DnlKgOE8pmZKBoD2pm7pkTZzmkaT6ML0WxxuvtuQhalbUKIq2C8U4YGxlY62UUF7TlElsptFvVwlKH0JStg==
 
-"@brontosaurus/node@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@brontosaurus/node/-/node-3.0.0.tgz#eb31946235b4ead623db4c6ffbe130ceb5960a69"
-  integrity sha512-YT1sKbSnXQdIvmD1Rh6GX0Or/zThnHXn/XFYQjKAaKXDqRZhlNVS8RcGH+0+NBRGYHEH/8+CtrLX25WDsq5xpQ==
+"@brontosaurus/node@^3.0.1":
+  version "3.0.1"
+  resolved "https://registry.yarnpkg.com/@brontosaurus/node/-/node-3.0.1.tgz#610b3dcb8db1648a0f3430640b0abe3ab45b7dcd"
+  integrity sha512-9HHcrwEN/QSYWow5ATSPzCYSkYiLGgMSBE28ZLO2NgY7xB87mIbDdlQCgZ69vK+ouVqW5OFNNuPWvECX222ubA==
   dependencies:
     "@brontosaurus/core" "^3.0.0"
     "@brontosaurus/definition" "^3.0.0"
     "@sudoo/extract" "^1.2.1"
-    connor "^2.6.0"
+    connor "^2.6.1"
     request "^2.88.0"
 
 "@sudoo/bark@^2.7.1":
@@ -75,10 +75,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.2.2.tgz#936acb5017c957a10a17052f11a51485edb3ba54"
   integrity sha512-5dgkXkchOSZwsFEazUsNmUV0/XjmX9yc7mkqauPCYOJWQHxcko6fKHh10mg5COUKMoAB9uPUL4M86o/HeHk8oA==
 
-"@sudoo/magic@^1.2.0":
-  version "1.2.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.2.0.tgz#3c6d2294f3e26ec8fa144f97ce36c66d812fa7db"
-  integrity sha512-fYf+mtLP49Blt+2w66CsfLU/iBoOfSGGGGZS4B/3BWgvwOnpswz8jO6sQel9y6FtSuNVc/oEqV/KBE8EzY7fSA==
+"@sudoo/magic@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.4.0.tgz#510f5c9685e8a2a5608c9b84bc5232e421c56049"
+  integrity sha512-MreEKYjbqCVDJrGiq51TgpK0V7YFksdiPvElXfJZs7U4KiHdAGLs2dZpGzsrzDFlwx/0ImFi1B+ZA4smhQNb8A==
 
 "@sudoo/mock@^1.2.0":
   version "1.2.0"
@@ -132,10 +132,10 @@
   dependencies:
     "@types/node" "*"
 
-"@types/ejs@^2.7.0":
-  version "2.7.0"
-  resolved "https://registry.yarnpkg.com/@types/ejs/-/ejs-2.7.0.tgz#bc84e083eae38f64a287a6dab9012bbe1d96e295"
-  integrity sha512-kM2g9Fdk/du24fKuuQhA/LBleFR4Z4JP2MVKpLxQQSzofF1uJ06D+c05zfLDAkkDO55aEeNwJih0gHrE/Ci20A==
+"@types/ejs@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@types/ejs/-/ejs-3.0.0.tgz#eeed4cd7eb731138da4d8f65634207cb343f4608"
+  integrity sha512-6mUaeRO+zTcoFzjXZgYybf5/FtXXyWmfkGheS04iPOEmE+lV3qBkcqG0WnabmJD2ATSPTlWDBMUpxdE80JqUPQ==
 
 "@types/express-serve-static-core@*":
   version "4.17.0"

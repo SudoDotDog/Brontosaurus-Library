@@ -16,12 +16,12 @@
   },
   "homepage": "https://github.com/SudoDotDog/Brontosaurus-Library#readme",
   "dependencies": {
-    "@brontosaurus/node": "^3.0.0",
+    "@brontosaurus/node": "^3.0.1",
     "@sudoo/express": "^2.0.2",
     "@sudoo/extract": "^1.2.1",
     "@sudoo/io": "^1.6.1",
     "@sudoo/log": "^1.2.2",
-    "@sudoo/magic": "^1.2.0",
+    "@sudoo/magic": "^1.4.0",
     "connor": "^2.6.1",
     "ejs": "^3.0.1",
     "js-yaml": "^3.13.1",
@@ -30,7 +30,7 @@
   "devDependencies": {
     "@sudoo/mock": "^1.2.0",
     "@sudoo/triforce": "^2.0.4",
-    "@types/ejs": "^2.7.0",
+    "@types/ejs": "^3.0.0",
     "@types/express": "^4.17.2",
     "@types/js-yaml": "^3.12.1",
     "@types/showdown": "^1.9.3"
