@@ -1,12 +1,14 @@
 ---
-name: hello
-title: Hello
+name: permission-hello
+title: Permission Hello
 categories:
-    - introduction
+    - hidden
 author: joshua
+hidden: true
+groups: []
 ---
 
-# Hello
+# Permission Required Hello
 
 Hello World
 

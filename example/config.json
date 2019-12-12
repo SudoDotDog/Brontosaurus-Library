@@ -21,81 +21,11 @@
             "title": "Hidden"
         }
     ],
-    "articles": [
-        {
-            "categories": [
-                "introduction"
-            ],
-            "author": "joshua",
-            "name": "hello",
-            "title": "Hello",
-            "path": "hello.md"
-        },
-        {
-            "categories": [
-                "introduction"
-            ],
-            "author": "joshua",
-            "name": "private-hello",
-            "title": "Private Hello",
-            "path": "hello.md",
-            "private": true
-        },
-        {
-            "categories": [
-                "introduction"
-            ],
-            "author": "joshua",
-            "name": "permission-hello",
-            "title": "Permission Hello",
-            "path": "hello.md",
-            "groups": [
-                "BRONTOSAURUS_SELF_CONTROL"
-            ]
-        },
-        {
-            "categories": [
-                "introduction"
-            ],
-            "author": "joshua",
-            "name": "permission-hello-more",
-            "title": "Permission Hello More",
-            "path": "hello.md",
-            "groups": [
-                "BRONTOSAURUS_SELF_CONTROL_MORE"
-            ]
-        },
-        {
-            "categories": [
-                "introduction",
-                "nested"
-            ],
-            "author": "joshua",
-            "name": "hello",
-            "title": "Hello",
-            "path": "hello.md"
-        },
-        {
-            "categories": [
-                "private"
-            ],
-            "author": "joshua",
-            "name": "private-hello",
-            "title": "Private Hello",
-            "path": "hello.md",
-            "private": true,
-            "groups": []
-        },
-        {
-            "categories": [
-                "hidden"
-            ],
-            "author": "joshua",
-            "name": "hidden-hello",
-            "title": "Hidden Hello",
-            "path": "hello.md",
-            "hidden": true,
-            "groups": []
-        }
+    "paths": [
+        "hello.md",
+        "hidden.md",
+        "permission-hello.md",
+        "private-hello.md",
+        "nested/hello.md"
     ]
 }

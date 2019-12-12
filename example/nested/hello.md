@@ -3,10 +3,11 @@ name: hello
 title: Hello
 categories:
     - introduction
+    - nested
 author: joshua
 ---
 
-# Hello
+# Nested Hello
 
 Hello World
 

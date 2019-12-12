@@ -1,12 +1,13 @@
 ---
-name: hello
-title: Hello
+name: private-hello
+title: Private Hello
 categories:
     - introduction
 author: joshua
+private: true
 ---
 
-# Hello
+# Private Hello
 
 Hello World
 

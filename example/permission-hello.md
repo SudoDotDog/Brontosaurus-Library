@@ -1,12 +1,14 @@
 ---
-name: hello
-title: Hello
+name: permission-hello
+title: Permission Hello
 categories:
     - introduction
 author: joshua
+groups:
+    - BRONTOSAURUS_SELF_CONTROL
 ---
 
-# Hello
+# Permission Required Hello
 
 Hello World
 
