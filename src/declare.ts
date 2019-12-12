@@ -10,13 +10,12 @@ export type Category = {
     readonly title: string;
 };
 
-export type Article = {
+export type ArticleConfig = {
 
     readonly categories: string[];
     readonly title: string;
     readonly author: string;
     readonly name: string;
-    readonly path: string;
 
     readonly template?: string;
     readonly styleSheet?: string;
@@ -25,6 +24,11 @@ export type Article = {
     readonly groups?: string[];
     readonly groupMode?: 'All' | 'OneOf';
 };
+
+export type Article = {
+
+    readonly path: string;
+} & ArticleConfig;
 
 export type GlobalTemplates = {
 
@@ -44,5 +48,5 @@ export type LibraryConfig = {
     readonly globalStyleSheet: string;
 
     readonly categories: Category[];
-    readonly articles: Article[];
+    readonly paths: string[];
 };

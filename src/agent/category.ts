@@ -6,6 +6,7 @@
 
 import { Article, Category } from "../declare";
 import { CategoryTree } from "../service/tree";
+import { ArticleAgent } from "./article";
 import { ConfigAgent } from "./config";
 
 export class CategoryAgent {
@@ -20,6 +21,7 @@ export class CategoryAgent {
     private readonly _dictionary: Map<string, Category>;
     private readonly _tree: CategoryTree;
     private readonly _config: ConfigAgent;
+    private readonly _article: ArticleAgent;
 
     private constructor() {
 
@@ -27,8 +29,9 @@ export class CategoryAgent {
 
         this._tree = CategoryTree.root();
         this._config = ConfigAgent.instance;
+        this._article = ArticleAgent.instance;
 
-        this.init(this._config.articles, this._config.categories);
+        this.init(this._article.articles, this._config.categories);
     }
 
     public get tree(): CategoryTree {

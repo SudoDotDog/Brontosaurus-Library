@@ -4,7 +4,9 @@
  * @description Article
  */
 
-import { Article } from "../declare";
+import * as Fs from "fs";
+import { Article, ArticleConfig } from "../declare";
+import { getArticleMetadata } from "../util/markdown";
 import { ConfigAgent } from "./config";
 
 export class ArticleAgent {
@@ -24,12 +26,19 @@ export class ArticleAgent {
         this._articles = new Map<string, Article>();
         this._config = ConfigAgent.instance;
 
-        this.init(this._config.articles);
+        this.initSync(this._config.paths);
     }
 
-    public init(articles: Article[]) {
+    public get articles(): Article[] {
 
-        for (const article of articles) {
+        return [...this._articles.values()];
+    }
+
+    public initSync(paths: string[]) {
+
+        for (const path of paths) {
+
+            const article: Article = this._makeArticle(path);
 
             const query: string = [...article.categories, article.name].join('/');
             this._articles.set(query, article);
@@ -45,5 +54,16 @@ export class ArticleAgent {
         }
 
         return null;
+    }
+
+    private _makeArticle(path: string): Article {
+
+        const text: string = Fs.readFileSync(this._config.joinPath(path), 'utf8');
+        const config: ArticleConfig = getArticleMetadata(text);
+
+        return {
+            ...config,
+            path,
+        };
     }
 }

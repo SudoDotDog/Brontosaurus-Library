@@ -40,6 +40,11 @@ export class ConfigAgent {
         return this._config.title;
     }
 
+    public get paths(): string[] {
+
+        return this._config.paths;
+    }
+
     public get basePath(): string {
 
         if (Path.isAbsolute(this._config.basePath)) {
@@ -52,11 +57,6 @@ export class ConfigAgent {
     public get categories(): Category[] {
 
         return this._config.categories;
-    }
-
-    public get articles(): Article[] {
-
-        return this._config.articles;
     }
 
     public get favicon(): string {

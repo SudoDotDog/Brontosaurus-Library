@@ -85,8 +85,8 @@ export const isDevelopment = (): boolean => process.env.NODE_ENV === 'developmen
 // tslint:disable-next-line: variable-name
 export const Throwable_VerifyConfig = (config: LibraryConfig): void => {
 
-    if (!Array.isArray(config.articles)) {
-        throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Articles");
+    if (!Array.isArray(config.paths)) {
+        throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, "Paths");
     }
 
     if (!config.index) {
@@ -103,13 +103,5 @@ export const Throwable_VerifyConfig = (config: LibraryConfig): void => {
         }
     }
 
-    for (const article of config.articles) {
-        if (!Array.isArray(article.categories)) {
-            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, `Article ${article.name} - Catagories`);
-        }
-        if (!article.name || !article.path || !article.title || !article.author) {
-            throw panic.code(ERROR_CODE.INVALID_LIBRARY_CONFIG, `Article ${article.name} - Others`);
-        }
-    }
     return;
 };
