@@ -44,7 +44,7 @@ export const getArticleMetadata = (text: string): ArticleConfig => {
 
     converter.makeHtml(text);
     const rawMetadata: string = converter.getMetadata(true) as string;
-    const metadata: Article = safeLoad(rawMetadata);
+    const metadata: Article = safeLoad(rawMetadata) as any;
 
     return metadata;
 };
