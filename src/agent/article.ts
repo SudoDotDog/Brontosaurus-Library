@@ -34,7 +34,7 @@ export class ArticleAgent {
         return [...this._articles.values()];
     }
 
-    public initSync(paths: string[]) {
+    public initSync(paths: string[]): void {
 
         for (const path of paths) {
 

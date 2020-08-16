@@ -6,7 +6,8 @@
 
 import * as Fs from "fs";
 import * as Path from "path";
-import { Article, Category, LibraryConfig } from "../declare";
+import { Category, LibraryConfig } from "../declare";
+// eslint-disable-next-line camelcase
 import { getConfigPath, getDefaultFourOFourTemplate, getDefaultNavigationTemplate, getDefaultPublicArticleTemplate, getDefaultStyleSheet, Throwable_VerifyConfig } from "../util/conf";
 import { ERROR_CODE, panic } from "../util/panic";
 
