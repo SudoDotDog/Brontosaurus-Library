@@ -76,10 +76,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/log/-/log-1.4.1.tgz#3c416b35a2240353234ee75461a6bc79db25ee32"
   integrity sha512-3Pm5Yj9/b7261FBcQ2T7JIVqocWD6PO27ulnVEWvU7S0pr1wVCmk2LKYBlMunhL/mjaaE1AoolJ8rQyJhCgbEA==
 
-"@sudoo/magic@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.6.0.tgz#8664766505e2fae8a3327548e763889cdbc748ac"
-  integrity sha512-YvJ5tAXKgK3ERfzSTBrcZuGkzbDNpq/TlQ6R5rNab/ACgDEXB8S3bzyEC4vg8ESeQ/q5RyB2Xv3hObBd65j/0g==
+"@sudoo/magic@^1.6.0", "@sudoo/magic@^1.8.0":
+  version "1.8.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/magic/-/magic-1.8.0.tgz#675396d0217d11884eed21af641c43b6969164de"
+  integrity sha512-xAfwMTMB4gXLdbK7iSqS9d26UPvT6+QTJ+SOz4wp0ANpvLarjkCKTNF4x4noKtWikIzZoan9l8J5Vr+lba3/aw==
 
 "@sudoo/mock@^1.3.0":
   version "1.3.0"
@@ -146,13 +146,14 @@
     "@types/node" "*"
     "@types/range-parser" "*"
 
-"@types/express@^4.17.3":
-  version "4.17.3"
-  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.3.tgz#38e4458ce2067873b09a73908df488870c303bd9"
-  integrity sha512-I8cGRJj3pyOLs/HndoP+25vOqhqWkAZsWMEmq1qXy/b/M3ppufecUwaK2/TVDVxcV61/iSdhykUjQQ2DLSrTdg==
+"@types/express@^4.17.7":
+  version "4.17.7"
+  resolved "https://registry.yarnpkg.com/@types/express/-/express-4.17.7.tgz#42045be6475636d9801369cd4418ef65cdb0dd59"
+  integrity sha512-dCOT5lcmV/uC2J9k0rPafATeeyz+99xTt54ReX11/LObZgfzJqZNcW27zGhYyX+9iSEGXGt5qLPwRSvBZcLvtQ==
   dependencies:
     "@types/body-parser" "*"
     "@types/express-serve-static-core" "*"
+    "@types/qs" "*"
     "@types/serve-static" "*"
 
 "@types/js-yaml@^3.12.2":
@@ -179,6 +180,11 @@
   version "13.7.6"
   resolved "https://registry.yarnpkg.com/@types/node/-/node-13.7.6.tgz#cb734a7c191472ae6a2b3a502b4dfffcea974113"
   integrity sha512-eyK7MWD0R1HqVTp+PtwRgFeIsemzuj4gBFSQxfPHY5iMjS7474e5wq+VFgTcdpyHeNxyKSaetYAjdMLJlKoWqA==
+
+"@types/qs@*":
+  version "6.9.4"
+  resolved "https://registry.yarnpkg.com/@types/qs/-/qs-6.9.4.tgz#a59e851c1ba16c0513ea123830dd639a0a15cb6a"
+  integrity sha512-+wYo+L6ZF6BMoEjtf8zB2esQsqdV6WsjRK/GP9WOgLPrq87PbNWgIxS76dS5uvl/QXtHGakZmwTznIfcPXcKlQ==
 
 "@types/range-parser@*":
   version "1.2.3"
