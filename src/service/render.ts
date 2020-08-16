@@ -34,7 +34,7 @@ export type PageRenderDataStructure = {
 
 export class PageRenderBuilder {
 
-    public static create(templatePath: string, init: PageRenderDataStructure) {
+    public static create(templatePath: string, init: PageRenderDataStructure): PageRenderBuilder {
 
         return new PageRenderBuilder(templatePath, {
             ...init,

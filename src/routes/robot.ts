@@ -19,6 +19,7 @@ export class RobotRoute extends BrontosaurusRoute {
         autoHook.wrap(this._robotHandler.bind(this), 'Robot'),
     ];
 
+    // eslint-disable-next-line @typescript-eslint/require-await
     private async _robotHandler(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
         try {

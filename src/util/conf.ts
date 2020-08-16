@@ -20,7 +20,7 @@ export const getApplicationKey = (): string => {
     throw panic.code(ERROR_CODE.ENVIRONMENT_APPLICATION_KEY);
 };
 
-export const getPublicKey = () => {
+export const getPublicKey = (): string => {
 
     if (process.env.BRONTOSAURUS_PUBLIC_KEY) {
 
@@ -82,7 +82,7 @@ export const getDefaultStyleSheet = (): string => {
 
 export const isDevelopment = (): boolean => process.env.NODE_ENV === 'development';
 
-// tslint:disable-next-line: variable-name
+// eslint-disable-next-line camelcase
 export const Throwable_VerifyConfig = (config: LibraryConfig): void => {
 
     if (!Array.isArray(config.paths)) {

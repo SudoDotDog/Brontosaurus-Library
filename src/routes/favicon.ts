@@ -22,6 +22,7 @@ export class FaviconRoute extends BrontosaurusRoute {
 
     private readonly _config: ConfigAgent = ConfigAgent.instance;
 
+    // eslint-disable-next-line @typescript-eslint/require-await
     private async _faviconRoute(req: SudooExpressRequest, res: SudooExpressResponse, next: SudooExpressNextFunction): Promise<void> {
 
         try {

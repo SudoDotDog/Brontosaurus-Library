@@ -26,6 +26,6 @@ app.health('/health');
 
 app.routeList(LibraryRoutes);
 
-// tslint:disable-next-line: no-magic-numbers
+// eslint-disable-next-line @typescript-eslint/no-magic-numbers
 app.host(9000);
 SudooLog.global.info('Hosting at port 9000');
