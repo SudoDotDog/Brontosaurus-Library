@@ -46,6 +46,18 @@ cov:
 	@NODE_ENV=test \
 	nyc $(mocha) --config test/.mocharc.json
 
+lint:
+	@echo "[INFO] Linting"
+	@NODE_ENV=production \
+	$(eslint) . --ext .ts,.tsx \
+	--config ./typescript/.eslintrc.json
+
+lint-fix:
+	@echo "[INFO] Linting and Fixing"
+	@NODE_ENV=development \
+	$(eslint) . --ext .ts,.tsx \
+	--config ./typescript/.eslintrc.json --fix
+
 install:
 	@echo "[INFO] Installing dev Dependencies"
 	@yarn install --production=false
