@@ -24,7 +24,7 @@
         "xlink",
         "xmlns"
     ],
-    "tslint.configFile": "typescript/tslint.json",
-    "javascript.preferences.importModuleSpecifier": "auto",
-    "typescript.preferences.importModuleSpecifier": "auto",
+    "eslint.options": {
+        "configFile": "./typescript/.eslintrc.json"
+    }
 }
