@@ -29,7 +29,7 @@ export type PageRenderDataStructure = {
     readonly login: {
         readonly status: boolean;
         readonly username?: string;
-    }
+    };
 };
 
 export class PageRenderBuilder {
