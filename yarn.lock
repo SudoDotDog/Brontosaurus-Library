@@ -149,10 +149,10 @@
   resolved "https://registry.yarnpkg.com/@sudoo/mocha-config/-/mocha-config-1.1.0.tgz#f1606c2bf052e740fd16d5fe630ca585b1a17721"
   integrity sha512-Sbmr3zZtbIefGXhAH6+zWPreBx5Zriq7No7OxMDIjNTPKk0mRHEN+qp/WTH3EAXcjaKHqJd4eV/9gMO4PJLXvg==
 
-"@sudoo/mock@^1.3.0":
-  version "1.3.0"
-  resolved "https://registry.yarnpkg.com/@sudoo/mock/-/mock-1.3.0.tgz#84e8c26724b74045539d26a2c1673ab1c08de6c7"
-  integrity sha512-ufWn6iRX3J5Q/3kyGUaku5BAe73QxofTosmdIyn397OtUI0NFQ/luGBFlG3af7Y4oR1f6LEOVI8n7fIYiw8Neg==
+"@sudoo/mock@^1.4.0":
+  version "1.4.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/mock/-/mock-1.4.0.tgz#b1b2447204d135cf3d873f608a609d68d8e47056"
+  integrity sha512-XAsikIIem1ymZR8KCTjNs5lnYoGzJtBP12xQzjPUWQrk4IUl9qQEjsU8LHLBHReNtvGws5Y7g5rnbhwNSdhJ7w==
 
 "@sudoo/pattern@^1.6.1":
   version "1.6.1"
