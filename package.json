@@ -30,7 +30,7 @@
     "showdown": "^1.9.1"
   },
   "devDependencies": {
-    "@sudoo/mock": "^1.4.0",
+    "@sudoo/mock": "^1.5.0",
     "@sudoo/triforce": "^2.8.7",
     "@types/ejs": "^3.0.4",
     "@types/js-yaml": "^3.12.5",
