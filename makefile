@@ -15,7 +15,7 @@ image_repo := brontosaurus/library
 # Build functions
 build_utils := node_modules/.bin/build-utils
 
-.IGNORE: clean-linux kill stop
+.IGNORE: kill stop
 
 main: run
 
@@ -23,7 +23,7 @@ dev:
 	@echo "[INFO] Building for development"
 	@NODE_ENV=development $(tsc) --p $(dev)
 
-build: clean-linux
+build: clean
 	@echo "[INFO] Building for production"
 	@NODE_ENV=production $(tsc) --p $(build)
 
