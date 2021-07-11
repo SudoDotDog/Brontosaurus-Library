@@ -4,7 +4,7 @@
  * @description Markdown
  */
 
-import { safeLoad } from "js-yaml";
+import { load } from "js-yaml";
 import { Converter } from "showdown";
 import { Article, ArticleConfig } from "../declare";
 
@@ -44,7 +44,7 @@ export const getArticleMetadata = (text: string): ArticleConfig => {
 
     converter.makeHtml(text);
     const rawMetadata: string = converter.getMetadata(true) as string;
-    const metadata: Article = safeLoad(rawMetadata) as any;
+    const metadata: Article = load(rawMetadata) as any;
 
     return metadata;
 };

@@ -14,9 +14,9 @@ setting.useCookieParser();
 
 if (isDevelopment()) {
     setting.allowCrossOrigin();
-    SudooLog.global.level(LOG_LEVEL.VERBOSE);
+    SudooLog.global.setLevel(LOG_LEVEL.VERBOSE);
 } else {
-    SudooLog.global.level(LOG_LEVEL.INFO);
+    SudooLog.global.setLevel(LOG_LEVEL.INFO);
 }
 
 const app: SudooExpress = SudooExpress.create(setting);
