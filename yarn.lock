@@ -122,6 +122,21 @@
   resolved "https://registry.yarnpkg.com/@sudoo/bark/-/bark-2.7.2.tgz#961c4b482dbc00d7c762607c63f7a3eaa8f8811e"
   integrity sha512-COaH8iYTyutU0bgqhklIQShops+NYHRlCb+XEXkMimlkQuiw2dUY6yATSyiq89vIy74W39FAs/FgHAG4+aJVKA==
 
+"@sudoo/build-utils@^1.0.0":
+  version "1.0.0"
+  resolved "https://registry.yarnpkg.com/@sudoo/build-utils/-/build-utils-1.0.0.tgz#b17b59df88909f7fa3ef02a1becda7647d1402ab"
+  integrity sha512-3jZEE1CYdhbfhP4dxVsYAclWz+NeZLfnL3pXgHdMSzJtsvkmy+Y6O3Y7TfHlA8b7H5wG2uyuXQe1/Cz549oOBw==
+  dependencies:
+    "@sudoo/coco" "^1.8.5"
+    "@sudoo/io" "^1.8.0"
+
+"@sudoo/coco@^1.8.5":
+  version "1.8.5"
+  resolved "https://registry.yarnpkg.com/@sudoo/coco/-/coco-1.8.5.tgz#35476265ea539889dd5694484fb375afbc1970bc"
+  integrity sha512-M+7fTfr9RhijZsODutrG3TXOKoHaE4E6AEi0+36m+4J7K0jRGU7BMicK0EWqYsesbp6Vp/zEu2sueUTisor6zg==
+  dependencies:
+    connor "^2.7.0"
+
 "@sudoo/eslint-config-react-a11y@1.0.0":
   version "1.0.0"
   resolved "https://registry.yarnpkg.com/@sudoo/eslint-config-react-a11y/-/eslint-config-react-a11y-1.0.0.tgz#6782f38a9f7a31a0a3bd189ded2ebb3eef7ad70a"

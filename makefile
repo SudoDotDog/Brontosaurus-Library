@@ -12,6 +12,9 @@ image_name := library
 image_tag := library
 image_repo := brontosaurus/library
 
+# Build functions
+build_utils := node_modules/.bin/build-utils
+
 .IGNORE: clean-linux kill stop
 
 main: run
@@ -67,19 +70,9 @@ install-prod:
 	@echo "[INFO] Installing Dependencies"
 	@yarn install --production=true
 
-clean: clean-linux
+clean:
 	@echo "[INFO] Cleaning release files"
-	@NODE_ENV=development $(ts_node) script/clean-app.ts
-
-clean-linux:
-	@echo "[INFO] Cleaning build files"
-	@rm -rf app
-	@rm -rf .nyc_output
-	@rm -rf coverage
-
-docker: build
-	@echo "[INFO] Create docker image"
-	@docker build -t $(image_name) -f Dockerfile ./
+	@NODE_ENV=development $(build_utils) clean-path app
 
 kill:
 	@echo "[INFO] Killing docker image"
