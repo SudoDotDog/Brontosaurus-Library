@@ -27,7 +27,7 @@
     "connor": "^2.7.0",
     "ejs": "^3.1.6",
     "js-yaml": "^4.1.0",
-    "showdown": "^2.0.0"
+    "showdown": "^2.0.2"
   },
   "devDependencies": {
     "@sudoo/build-utils": "^1.0.0",
