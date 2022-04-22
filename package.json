@@ -25,7 +25,7 @@
     "@sudoo/pattern": "^1.7.0",
     "@sudoo/verify": "^1.17.1",
     "connor": "^2.7.0",
-    "ejs": "^3.1.6",
+    "ejs": "^3.1.7",
     "js-yaml": "^4.1.0",
     "showdown": "^2.0.3"
   },
