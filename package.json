@@ -23,7 +23,7 @@
     "@sudoo/log": "^1.6.0",
     "@sudoo/magic": "^1.9.0",
     "@sudoo/pattern": "^1.10.0",
-    "@sudoo/verify": "^1.17.1",
+    "@sudoo/verify": "^1.19.0",
     "connor": "^2.7.0",
     "ejs": "^3.1.8",
     "js-yaml": "^4.1.0",
