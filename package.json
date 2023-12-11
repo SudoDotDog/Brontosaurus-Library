@@ -36,7 +36,7 @@
     "@types/ejs": "^3.1.2",
     "@types/js-yaml": "^4.0.9",
     "@types/showdown": "^2.0.4",
-    "ts-node": "^10.9.1"
+    "ts-node": "^10.9.2"
   },
   "nyc": {
     "extension": [
